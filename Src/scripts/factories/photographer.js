@@ -1,12 +1,15 @@
+//factory for photographers data
 function photographerFactory(data) {
-  const { name, portrait, city, tagline, price } = data;
-
+  const { name, portrait, city, tagline, price, id } = data;
   const picture = `./src/assets/photographers/${portrait}`;
 
+  //create 1 article for each photographers, && add data in html
   function getUserCardDOM() {
     const article = document.createElement("article");
     const a = document.createElement("a");
-    a.setAttribute("href", "photographer.html");
+    a.setAttribute("href", `photographer.html`);
+    a.setAttribute("class", "photographer_btn");
+    article.setAttribute("id", id);
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     const h2 = document.createElement("h2");
@@ -21,10 +24,12 @@ function photographerFactory(data) {
     article.appendChild(a);
     a.appendChild(img);
     a.appendChild(h2);
-    a.appendChild(h3);
-    a.appendChild(h4);
-    a.appendChild(p);
+    article.appendChild(h3);
+    article.appendChild(h4);
+    article.appendChild(p);
+
     return article;
   }
-  return { name, picture, city, tagline, price, getUserCardDOM };
+
+  return { name, picture, city, tagline, price, id, getUserCardDOM };
 }

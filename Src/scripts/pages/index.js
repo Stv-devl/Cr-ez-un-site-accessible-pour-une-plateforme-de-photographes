@@ -1,25 +1,23 @@
-// getData from Json files
-async function getData() {
+//get Json with Fetch send variable photographers with Json data
+async function getPhotographers(photographers) {
   try {
     const response = await fetch(`./Src/data/photographers.json`);
 
     if (!response.ok) {
-      throw new Error("Error");
+      throw new Error("HTTP error, status = " + response.status);
     }
     const data = await response.json();
+    photographers = data.photographers;
 
-    const photographers = data.photographers;
-
-    console.log(photographers);
-
-    displayData(photographers);
+    return {
+      photographers,
+    };
   } catch (error) {
     return;
   }
 }
 
-getData();
-
+//displaydata, launch photographerFactory(), send each photographer data to factory photographerFactory
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
@@ -28,52 +26,28 @@ async function displayData(photographers) {
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
   });
+
+  const photographerBtn = document.querySelectorAll(".photographer_btn");
+
+  photographerBtn.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      let elementId = element.parentElement.id;
+      saveToLocalstorage(elementId);
+    });
+  });
 }
 
-/*async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+//save photographer Id to local storage
+function saveToLocalstorage(elementId) {
+  let savingId = [];
+  savingId.push(elementId);
+  localStorage.setItem("Saving Id", JSON.stringify(savingId));
+}
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
-
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
-    */
-/*
+// Get data from fetch, launch display function with photograpers data
 async function init() {
-  // Récupère les datas des photographes
   const { photographers } = await getPhotographers();
   displayData(photographers);
 }
 
 init();
-*/
