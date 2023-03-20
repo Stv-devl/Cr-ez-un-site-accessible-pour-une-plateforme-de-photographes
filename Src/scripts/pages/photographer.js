@@ -2,7 +2,9 @@
 async function displayData(medias, photographerProfil) {
   const mediaSection = document.querySelector(".medias_articles");
   const photographHeader = document.querySelector(".photograph-header");
+  const photographFooter = document.querySelector(".footer");
 
+  console.log(medias);
   console.log(photographerProfil);
 
   medias.forEach((media) => {
@@ -14,6 +16,9 @@ async function displayData(medias, photographerProfil) {
     const photographerProfilModel = photographerFactory(profil);
     const photographerProfilDOM = photographerProfilModel.photographerProfil();
     photographHeader.appendChild(photographerProfilDOM);
+
+    const photographerLikeDOM = photographerProfilModel.photographerLike();
+    photographFooter.appendChild(photographerLikeDOM);
   });
 }
 

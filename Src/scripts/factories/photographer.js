@@ -60,14 +60,35 @@ function photographerFactory(data) {
     profilWrapper.appendChild(h1);
     profilWrapper.appendChild(h2);
     profilWrapper.appendChild(profilText);
-
     profilcontainer.appendChild(button);
     button.appendChild(text);
     profilcontainer.appendChild(profilImg);
     return profilcontainer;
   }
 
-  function photographerLike() {}
+  function photographerLike() {
+    const likeContainer = document.createElement("div");
+    likeContainer.setAttribute("class", "like_container");
+
+    const likeWrapper = document.createElement("div");
+    likeWrapper.setAttribute("class", "like_wrapper");
+    const likeNumber = document.createElement("p");
+    likeNumber.setAttribute("class", "like_number");
+    likeNumber.textContent = "297 081";
+    const likeIcone = document.createElement("i");
+
+    likeIcone.setAttribute("class", "fa-solid fa-heart");
+    const salary = document.createElement("p");
+    salary.setAttribute("class", "salary");
+    salary.textContent = `${price}$/jour`;
+
+    //appendchild
+    likeContainer.appendChild(likeWrapper);
+    likeContainer.appendChild(salary);
+    likeWrapper.appendChild(likeNumber);
+    likeWrapper.appendChild(likeIcone);
+    return likeContainer;
+  }
 
   return {
     name,
