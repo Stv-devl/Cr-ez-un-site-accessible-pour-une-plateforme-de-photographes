@@ -2,13 +2,24 @@
   display: none;
 }
 
+/****************section photographer header**********************/
+
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
 }
 
-/****************new css**********************/
+.profil_container {
+  display: flex;
+}
+
+.profil_image {
+  height: 200px;
+  width: 200px;
+}
+
+/****************new css // pictures cards**********************/
 
 .medias_articles {
   display: grid;

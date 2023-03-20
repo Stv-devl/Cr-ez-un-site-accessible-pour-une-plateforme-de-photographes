@@ -1,3 +1,4 @@
+//factory
 function mediasFactory(data) {
   const { title, likes, image, video } = data;
   const picture = `./src/assets/images/${image}`;
@@ -7,16 +8,16 @@ function mediasFactory(data) {
     const article = document.createElement("article");
     article.setAttribute("class", "picture_card");
     //chose image or video (do an other function)
-    if (image === undefined) {
-      const video = document.createElement("video");
-      video.setAttribute("src", getVideo);
-      video.setAttribute("class", "videos");
-      article.appendChild(video);
-    } else {
+    if (data.hasOwnProperty("image")) {
       const img = document.createElement("img");
       img.setAttribute("src", picture);
       img.setAttribute("class", "pictures");
       article.appendChild(img);
+    } else {
+      const video = document.createElement("video");
+      video.setAttribute("src", getVideo);
+      video.setAttribute("class", "videos");
+      article.appendChild(video);
     }
     /*information_wrapper*/
     const informationwrapper = document.createElement("div");

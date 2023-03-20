@@ -1,22 +1,3 @@
-//get Json with Fetch send variable photographers with Json data
-async function getPhotographers(photographers) {
-  try {
-    const response = await fetch(`./Src/data/photographers.json`);
-
-    if (!response.ok) {
-      throw new Error("HTTP error, status = " + response.status);
-    }
-    const data = await response.json();
-    photographers = data.photographers;
-
-    return {
-      photographers,
-    };
-  } catch (error) {
-    return;
-  }
-}
-
 //displaydata, launch photographerFactory(), send each photographer data to factory photographerFactory
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
@@ -29,6 +10,7 @@ async function displayData(photographers) {
 
   const photographerBtn = document.querySelectorAll(".photographer_btn");
 
+  //at click keep the photographe id & send to save local storage
   photographerBtn.forEach((element) => {
     element.addEventListener("click", (e) => {
       let elementId = element.parentElement.id;
