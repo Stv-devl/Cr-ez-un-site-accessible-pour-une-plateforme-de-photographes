@@ -1,17 +1,25 @@
 //factory
 function mediasFactory(data) {
-  const { title, likes, image, video } = data;
+  const { title, likes, image, video, id } = data;
   const picture = `./src/assets/images/${image}`;
   const getVideo = `./src/assets/images/${video}`;
+
+  /*get title() {
+    return this._title.hasOwnProperty("fr")
+      ? this._title["fr"]
+      : this._title["en"];
+  }*/
 
   function getProfileDOMpage() {
     const article = document.createElement("article");
     article.setAttribute("class", "picture_card");
+    article.setAttribute("id", id);
     //chose image or video (do an other function)
     if (data.hasOwnProperty("image")) {
       const img = document.createElement("img");
       img.setAttribute("src", picture);
       img.setAttribute("class", "pictures");
+
       article.appendChild(img);
     } else {
       const video = document.createElement("video");
@@ -44,5 +52,5 @@ function mediasFactory(data) {
     return article;
   }
 
-  return { title, likes, image, video, getProfileDOMpage };
+  return { title, likes, image, video, id, getProfileDOMpage };
 }
