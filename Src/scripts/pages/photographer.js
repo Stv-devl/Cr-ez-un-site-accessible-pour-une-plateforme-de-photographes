@@ -4,14 +4,13 @@ async function displayData(medias, photographerProfil) {
   const photographHeader = document.querySelector(".photograph-header");
   const photographFooter = document.querySelector(".footer");
 
-  console.log(medias);
-
   //get data for pictures cards
   medias.forEach((media) => {
     const mediasModel = mediasFactory(media);
     const mediaCardDOM = mediasModel.getProfileDOMpage();
     mediaSection.appendChild(mediaCardDOM);
   });
+
   //get data for profil
   photographerProfil.forEach((profil) => {
     const photographerProfilModel = photographerFactory(profil);
@@ -25,11 +24,11 @@ async function displayData(medias, photographerProfil) {
   const pictureCard = document.querySelectorAll(".picture_card");
   const lightBoxWrapper = document.querySelector(".lightbox_wrapper");
 
-  pictureCard.forEach((img) => {
-    img.addEventListener("click", (e) => {
-      let pictureId = img.id;
-      displayLightbox(pictureId);
-      const lightBoxModel = lightBoxFactory(pictureId, medias);
+  pictureCard.forEach((article) => {
+    article.addEventListener("click", (e) => {
+      let pictureSrc = article.children[0].getAttribute("src").split("/")[4];
+      displayLightbox();
+      const lightBoxModel = lightBoxFactory(pictureSrc, medias);
       const lightBoxDOM = lightBoxModel.getLightBoxDOMpage();
       lightBoxWrapper.appendChild(lightBoxDOM);
     });
@@ -38,10 +37,6 @@ async function displayData(medias, photographerProfil) {
   closing.addEventListener("click", (e) => {
     closeLightbox();
     lightBoxWrapper.children[2].remove();
-  });
-
-  nextBtn.addEventListener("click", (e) => {
-    console.log(firstPicture);
   });
 }
 
