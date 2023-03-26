@@ -19,6 +19,7 @@ class App {
         const Template = new photographersCard(photographer);
         this.photographersSection.appendChild(Template.getUserCardDOM());
       });
+    getPhotographerId();
   }
 }
 
@@ -44,7 +45,6 @@ const app = new App();
 
 function init() {
   app.displayData();
-  getPhotographerId();
 }
 
 init();

@@ -13,6 +13,7 @@ class App {
 
     //get photographer Id from local storage,
     const recupId = JSON.parse(localStorage.getItem("Saving Id"))[0];
+
     //filter mediasData for get images corresponding to photographerId
     const mediasDataFilter = mediasData.filter(function (getId) {
       return getId.photographerId == recupId;
