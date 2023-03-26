@@ -2,7 +2,6 @@ class MediaTextCard {
   constructor(data) {
     this.text = data;
   }
-
   getTextCardDOM() {
     const informationwrapper = document.createElement("div");
     informationwrapper.setAttribute("class", "information_wrapper");

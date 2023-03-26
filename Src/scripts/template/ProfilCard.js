@@ -2,7 +2,6 @@ class ProfilCard {
   constructor(data) {
     this.profil = data;
   }
-
   getProfilCardDOM() {
     //profil container
     const profilcontainer = document.createElement("div");
