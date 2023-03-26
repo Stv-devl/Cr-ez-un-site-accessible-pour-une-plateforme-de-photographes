@@ -1,38 +1,9 @@
-//factory for photographers data
-function photographerFactory(data) {
-  const { name, portrait, city, country, tagline, price, id } = data;
-  const picture = `./src/assets/photographers/${portrait}`;
-
-  //create 1 article for each photographers, && add data in html
-  function getUserCardDOM() {
-    const article = document.createElement("article");
-    const a = document.createElement("a");
-    a.setAttribute("href", `photographer.html`);
-    a.setAttribute("class", "photographer_btn");
-    article.setAttribute("id", id);
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    const h2 = document.createElement("h2");
-    h2.textContent = name;
-    const h3 = document.createElement("h3");
-    h3.textContent = `${city}, ${country}`;
-    const h4 = document.createElement("h4");
-    h4.textContent = tagline;
-    const p = document.createElement("p");
-    p.setAttribute("class", "salary");
-    p.textContent = `${price}$/jour`;
-    article.appendChild(a);
-    a.appendChild(img);
-    a.appendChild(h2);
-    article.appendChild(h3);
-    article.appendChild(h4);
-    article.appendChild(p);
-
-    return article;
+class ProfilCard {
+  constructor(data) {
+    this.profil = data;
   }
 
-  //create html for photographer profile
-  function photographerProfil() {
+  getProfilCardDOM() {
     //profil container
     const profilcontainer = document.createElement("div");
     profilcontainer.setAttribute("class", "profil_container");
@@ -41,11 +12,11 @@ function photographerFactory(data) {
     profilWrapper.setAttribute("class", "profil_wrapper");
 
     const h1 = document.createElement("h1");
-    h1.textContent = name;
+    h1.textContent = this.profil.name;
     const h2 = document.createElement("h2");
-    h2.textContent = `${city}, ${country}`;
+    h2.textContent = `${this.profil.city}, ${this.profil.country}`;
     const profilText = document.createElement("p");
-    profilText.textContent = tagline;
+    profilText.textContent = this.profil.tagline;
     //button
     const button = document.createElement("button");
     const text = document.createTextNode("Contactez-moi");
@@ -54,7 +25,7 @@ function photographerFactory(data) {
     //img
     const profilImg = document.createElement("img");
     profilImg.setAttribute("class", "profil_image");
-    profilImg.setAttribute("src", picture);
+    profilImg.setAttribute("src", this.profil.portrait);
     //appendchild
     profilcontainer.appendChild(profilWrapper);
     profilWrapper.appendChild(h1);
@@ -66,7 +37,7 @@ function photographerFactory(data) {
     return profilcontainer;
   }
 
-  function photographerLike() {
+  getFooterCardDOM() {
     const likeContainer = document.createElement("div");
     likeContainer.setAttribute("class", "like_container");
 
@@ -80,7 +51,7 @@ function photographerFactory(data) {
     likeIcone.setAttribute("class", "fa-solid fa-heart");
     const salary = document.createElement("p");
     salary.setAttribute("class", "salary");
-    salary.textContent = `${price}$/jour`;
+    salary.textContent = `${this.profil.price}$/jour`;
 
     //appendchild
     likeContainer.appendChild(likeWrapper);
@@ -89,17 +60,4 @@ function photographerFactory(data) {
     likeWrapper.appendChild(likeIcone);
     return likeContainer;
   }
-
-  return {
-    name,
-    picture,
-    city,
-    country,
-    tagline,
-    price,
-    id,
-    getUserCardDOM,
-    photographerProfil,
-    photographerLike,
-  };
 }

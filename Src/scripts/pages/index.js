@@ -1,17 +1,30 @@
-//displaydata, launch photographerFactory(), send each photographer data to factory photographerFactory
-async function displayData(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
+class App {
+  constructor() {
+    //get the Api
+    this.dataApi = new photographersApi("./Src/data/photographers.json");
+    //selection dom section for send articles
+    this.photographersSection = document.querySelector(".photographer_section");
+  }
 
-  //get data from each photographer
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
-  });
+  //
+  async displayData() {
+    //get data from Api
+    const gettAllData = await this.dataApi.get();
+    const photographersData = gettAllData.photographers;
 
+    //send photophraphers datas to class photographers
+    photographersData
+      .map((photographer) => new Photographers(photographer))
+      .forEach((photographer) => {
+        const Template = new photographersCard(photographer);
+        this.photographersSection.appendChild(Template.getUserCardDOM());
+      });
+  }
+}
+
+//at click we keep the photographe id & send to save local storage
+function getPhotographerId() {
   const photographerBtn = document.querySelectorAll(".photographer_btn");
-
-  //at click keep the photographe id & send to save local storage
   photographerBtn.forEach((element) => {
     element.addEventListener("click", (e) => {
       let elementId = element.parentElement.id;
@@ -27,10 +40,11 @@ function saveToLocalstorage(elementId) {
   localStorage.setItem("Saving Id", JSON.stringify(savingId));
 }
 
-// Get data from fetch, launch display function with photograpers data
-async function init() {
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
+const app = new App();
+
+function init() {
+  app.displayData();
+  getPhotographerId();
 }
 
 init();

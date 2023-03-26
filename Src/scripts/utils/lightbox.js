@@ -1,4 +1,4 @@
-function displayLightbox() {
+function openLightbox() {
   lightBox.style.display = "flex";
 }
 function closeLightbox() {
