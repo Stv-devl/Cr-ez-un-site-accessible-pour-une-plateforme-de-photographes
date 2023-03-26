@@ -1,4 +1,4 @@
-class portfolioVideoCards {
+class PortfolioVideoCards {
   constructor(data) {
     this.portfolio = data;
   }

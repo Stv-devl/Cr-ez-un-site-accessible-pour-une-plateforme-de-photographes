@@ -27,18 +27,20 @@ class App {
     const mediasVideoFilter = sendMediaDatas.filter(function (getVideo) {
       return getVideo.video;
     });
+
     //filter mediasDataFilter for get only images
     const mediasImageFilter = sendMediaDatas.filter(function (getImage) {
       return getImage.image;
     });
+
     //send video card to be display in dom
     mediasVideoFilter.forEach((video) => {
-      const videoTemplate = new portfolioVideoCards(video);
+      const videoTemplate = new PortfolioVideoCards(video);
       this.mediaSection.appendChild(videoTemplate.getPortfolioVideoCardDOM());
     });
     //send image card to be display in dom
     mediasImageFilter.forEach((image) => {
-      const imageTemplate = new portfolioPictureCards(image);
+      const imageTemplate = new PortfolioPictureCards(image);
       this.mediaSection.appendChild(imageTemplate.getPortfolioImageCardDOM());
     });
 
