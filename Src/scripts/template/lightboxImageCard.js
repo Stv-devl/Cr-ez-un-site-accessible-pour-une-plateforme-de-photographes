@@ -3,7 +3,7 @@ class LightBoxImageCard {
     this.lightboxImage = data;
   }
   lightBoxImageCardDom() {
-    const picture = `./src/assets/images/${this.lightboxImage.image}`;
+    const picture = `./Src/assets/images/${this.lightboxImage.image}`;
 
     const imageWrapper = document.createElement("div");
     imageWrapper.setAttribute("class", "image_wrapper");

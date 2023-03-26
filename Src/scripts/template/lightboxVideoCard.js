@@ -4,7 +4,7 @@ class LightBoxVideoCard {
     console.log(data);
   }
   lightBoxVideoCardDom() {
-    const videosource = `./src/assets/images/${this.lightBoxVideo.video}`;
+    const videosource = `./Src/assets/images/${this.lightBoxVideo.video}`;
     const video = document.createElement("video");
     const imageWrapper = document.createElement("div");
     imageWrapper.setAttribute("class", "image_wrapper");
