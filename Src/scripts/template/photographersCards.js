@@ -15,8 +15,9 @@ class photographersCard {
     h2.textContent = this.profils.name;
     const h3 = document.createElement("h3");
     h3.textContent = `${this.profils.city}, ${this.profils.country}`;
-    const h4 = document.createElement("h4");
-    h4.textContent = this.profils.tagline;
+    const pTagline = document.createElement("p");
+    pTagline.textContent = this.profils.tagline;
+    pTagline.setAttribute("class", "photographer_tag");
     const p = document.createElement("p");
     p.setAttribute("class", "salary");
     p.textContent = `${this.profils.price}$/jour`;
@@ -24,7 +25,7 @@ class photographersCard {
     a.appendChild(img);
     a.appendChild(h2);
     article.appendChild(h3);
-    article.appendChild(h4);
+    article.appendChild(pTagline);
     article.appendChild(p);
 
     return article;

@@ -1,0 +1,22 @@
+/**********************************************************************/
+/*header*/
+/**********************************************************************/
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  cursor: pointer;
+
+  .logo {
+    height: 50px;
+    margin-left: 100px;
+  }
+
+  h1 {
+    color: $primarydarkRed;
+    margin-right: 100px;
+  }
+}

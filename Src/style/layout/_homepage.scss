@@ -1,0 +1,40 @@
+/**********************************************************************/
+/*Menu*/
+/**********************************************************************/
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  margin-top: 100px;
+  height: 70vh;
+
+  article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img {
+      height: 200px;
+      width: 200px;
+      border-radius: 120%;
+    }
+
+    h2 {
+      margin-top: 10px;
+      color: $primaryLightRed;
+    }
+
+    h3 {
+      color: $primarydarkRed;
+    }
+    .photographer_tag {
+      margin-top: 2px;
+    }
+    .salary {
+      margin-top: 4px;
+      color: $grey;
+    }
+  }
+}

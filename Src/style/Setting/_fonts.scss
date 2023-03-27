@@ -1,0 +1,58 @@
+/****************************setting fonts***************************/
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+/**************************setting text***************************/
+
+h1,
+h2 {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.photographer_tag {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.salary {
+  font-size: 9px;
+}
+
+.profil_name {
+  font-size: 64px;
+  font-weight: 400;
+}
+.profil_country {
+  font-weight: 400;
+  font-size: 24px;
+}
+.profil_tagline {
+  font-size: 18px;
+}
+
+.filter_title,
+.before_popular,
+.dropdown_text {
+  font-weight: 700;
+  size: 18px;
+}
+
+.lightbox_title,
+.img_title {
+  font-size: 24px;
+}
+
+.like_number {
+  font-size: 16px;
+}
+
+.footer_like_number,
+.footer_salary {
+  font-size: 24px;
+  font-weight: 500;
+}

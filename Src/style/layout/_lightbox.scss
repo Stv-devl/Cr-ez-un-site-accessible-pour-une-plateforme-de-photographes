@@ -1,0 +1,57 @@
+/***************lightbox****************/
+.lightbox_container {
+  display: none;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 10;
+  background-color: $white;
+
+  .lightbox_wrapper {
+    position: relative;
+    display: flex;
+    z-index: 11;
+    align-items: center;
+    width: 1050px;
+    height: 900px;
+    margin: 0 auto;
+  }
+
+  .closing_cross {
+    position: absolute;
+    zoom: 200%;
+    right: -40px;
+    top: 10px;
+    cursor: pointer;
+  }
+
+  .previous,
+  .next {
+    zoom: 200%;
+    cursor: pointer;
+  }
+
+  .image_switch {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+    left: -75px;
+    width: 1200px;
+  }
+  .lightbox_videos {
+    width: 1050px;
+    height: 100%;
+  }
+
+  .lightbox_pictures {
+    width: 1050px;
+    height: 900px;
+  }
+  .lightbox_title {
+    text-align: left;
+    color: $primarydarkRed;
+  }
+}

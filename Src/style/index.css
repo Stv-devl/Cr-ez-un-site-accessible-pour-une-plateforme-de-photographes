@@ -1,0 +1,456 @@
+/***************************Setting colors***************************/ /****************************setting fonts***************************/
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+/**************************setting text***************************/
+h1,
+h2 {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.photographer_tag {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.salary {
+  font-size: 9px;
+}
+
+.profil_name {
+  font-size: 64px;
+  font-weight: 400;
+}
+
+.profil_country {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.profil_tagline {
+  font-size: 18px;
+}
+
+.filter_title,
+.before_popular,
+.dropdown_text {
+  font-weight: 700;
+  size: 18px;
+}
+
+.lightbox_title,
+.img_title {
+  font-size: 24px;
+}
+
+.like_number {
+  font-size: 16px;
+}
+
+.footer_like_number,
+.footer_salary {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/*************************Setting mixin************************/ /***************************************************************/
+/*setting*/
+/***************************************************************/
+/*************************Setting page**************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  margin-block: 0;
+  outline: none;
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+  max-width: 1400px;
+  text-align: center;
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+
+/*************Text link & img fit & icone color***************/
+a,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.darkredicone {
+  color: #901c1c;
+}
+
+/*************************breakup**************************/
+/*
+$breakup-tablette: 650px;
+$breakup-desktop: 1060px;*/
+/**********************************************************************/
+/*header*/
+/**********************************************************************/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  cursor: pointer;
+}
+header .logo {
+  height: 50px;
+  margin-left: 100px;
+}
+header h1 {
+  color: #901c1c;
+  margin-right: 100px;
+}
+
+/**********************************************************************/
+/*Menu*/
+/**********************************************************************/
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  margin-top: 100px;
+  height: 70vh;
+}
+.photographer_section article {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.photographer_section article img {
+  height: 200px;
+  width: 200px;
+  border-radius: 120%;
+}
+.photographer_section article h2 {
+  margin-top: 10px;
+  color: #d3573c;
+}
+.photographer_section article h3 {
+  color: #901c1c;
+}
+.photographer_section article .photographer_tag {
+  margin-top: 2px;
+}
+.photographer_section article .salary {
+  margin-top: 4px;
+  color: #757575;
+}
+
+.photographer_main {
+  width: 90%;
+  margin: 0 auto;
+  /****************section photographer header**********************/
+  /****************Section : Filter**********************/
+  /*************Section : medias_articles***************/
+}
+.photographer_main .photograph-header {
+  background-color: #fafafa;
+  height: 313px;
+}
+.photographer_main .photograph-header .profil_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 50px;
+}
+.photographer_main .photograph-header .profil_container .profil_wrapper {
+  text-align: left;
+}
+.photographer_main .photograph-header .profil_container .profil_wrapper .profil_name {
+  color: #d3573c;
+}
+.photographer_main .photograph-header .profil_container .profil_wrapper .profil_country {
+  color: #901c1c;
+}
+.photographer_main .photograph-header .profil_container .profil_wrapper .profil_tagline {
+  margin-top: 15px;
+  color: #525252;
+}
+.photographer_main .photograph-header .profil_container .contact_button {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 11px;
+  width: 170px;
+  height: 69px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+}
+.photographer_main .photograph-header .profil_container .contact_button:hover {
+  background-color: #db8876;
+  color: #000000;
+}
+.photographer_main .photograph-header .profil_container .profil_image {
+  height: 200px;
+  width: 200px;
+  border-radius: 120%;
+}
+.photographer_main .filter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+  margin: 20px 0 58px 0;
+}
+.photographer_main .filter .dropdown_container {
+  position: relative;
+  z-index: 5;
+}
+.photographer_main .filter .dropdown_container .dropdown_btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 170px;
+  height: 51px;
+  background-color: #901c1c;
+  border-radius: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+.photographer_main .filter .dropdown_container .dropdown_btn .before_popular {
+  color: #ffffff;
+}
+.photographer_main .filter .dropdown_container .dropdown_btn .dropdown_icone {
+  position: absolute;
+  z-index: 10;
+  color: #ffffff;
+  right: 15px;
+  top: 16px;
+  cursor: pointer;
+  transform: rotate(180deg);
+  transition: 0.6s ease-in-out;
+}
+.photographer_main .filter .dropdown_container .dropdown_btn .dropdown_icone .rotate {
+  transform: rotate(0);
+}
+.photographer_main .filter .dropdown_container .dropdown_wrapper {
+  position: absolute;
+  opacity: 0;
+  background-color: #901c1c;
+  width: 170px;
+  height: 155px;
+  border-radius: 5px;
+  padding: 1px 10px;
+  text-align: left;
+  top: -98px;
+  transition: 0.6s ease-in-out;
+}
+.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown .dropdown_text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10px;
+  height: 51px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown #date {
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+.photographer_main .filter .dropdown_container .active {
+  opacity: 1;
+  transform: translateY(98px);
+}
+.photographer_main .medias_articles {
+  display: grid;
+  justify-items: center;
+  justify-content: space-between;
+  -moz-column-gap: 8%;
+       column-gap: 8%;
+  row-gap: 20px;
+  grid-template-columns: 28% 28% 28%;
+  cursor: pointer;
+}
+.photographer_main .medias_articles .picture_card {
+  width: 100%;
+}
+.photographer_main .medias_articles .picture_card .pictures,
+.photographer_main .medias_articles .picture_card .videos {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+}
+.photographer_main .medias_articles .picture_card .information_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.photographer_main .medias_articles .picture_card .information_wrapper .img_title {
+  color: #901c1c;
+}
+.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper .like_number {
+  transition: 0.4s ease-in;
+}
+.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper .cliked {
+  color: #901c1c;
+  font-size: 24px;
+}
+.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper i {
+  color: #901c1c;
+}
+
+/***************lightbox****************/
+.lightbox_container {
+  display: none;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 10;
+  background-color: #ffffff;
+}
+.lightbox_container .lightbox_wrapper {
+  position: relative;
+  display: flex;
+  z-index: 11;
+  align-items: center;
+  width: 1050px;
+  height: 900px;
+  margin: 0 auto;
+}
+.lightbox_container .closing_cross {
+  position: absolute;
+  zoom: 200%;
+  right: -40px;
+  top: 10px;
+  cursor: pointer;
+}
+.lightbox_container .previous,
+.lightbox_container .next {
+  zoom: 200%;
+  cursor: pointer;
+}
+.lightbox_container .image_switch {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 50%;
+  left: -75px;
+  width: 1200px;
+}
+.lightbox_container .lightbox_videos {
+  width: 1050px;
+  height: 100%;
+}
+.lightbox_container .lightbox_pictures {
+  width: 1050px;
+  height: 900px;
+}
+.lightbox_container .lightbox_title {
+  text-align: left;
+  color: #901c1c;
+}
+
+#contact_modal {
+  display: none;
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+.modal .modal header {
+  justify-content: space-between;
+  width: 100%;
+}
+.modal .modal header img {
+  cursor: pointer;
+}
+.modal .modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
+}
+.modal form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.modal form label {
+  color: #525252;
+  font-size: 36px;
+}
+.modal form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+.modal form input {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+/**********************************************************************/
+/*footer*/
+/**********************************************************************/
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  background-color: #db8876;
+  width: 376px;
+  height: 50px;
+  padding: 0px 34px;
+}
+.footer .footer_like_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  justify-content: space-between;
+  height: 100%;
+  cursor: pointer;
+}
+.footer .footer_like_container .footer_like_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+}
+.footer .footer_like_container .footer_like_wrapper:hover i {
+  color: #901c1c;
+}/*# sourceMappingURL=index.css.map */

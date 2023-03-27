@@ -2,10 +2,9 @@
 <html>
 
 <head>
-  <link href="./Src/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="./Src/style/index.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="./Src/assets/icons/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <!-- add font-aweseome librairie -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,23 +13,33 @@
 </head>
 
 <body>
-
   <header>
-    <img src="./Src/assets/images/logo.png" class="logo" />
+    <a href="index.html">
+      <img src="./Src/assets/images/logo.png" class="logo" /></a>
   </header>
 
-  <main id="main">
+  <main id="main" class="photographer_main">
 
-    <section class="photograph-header">
-    </section>
+    <section class=" photograph-header"></section>
 
     <section class="filter">
-      <p></p>
-      <div></div> <!-- menu déroulant -->
+      <p class="filter_title">Trier par</p>
+      <div class="dropdown_container">
+        <div class="dropdown_btn">
+          <p class="before_popular">Popularité</p>
+          <div class="dropdown_icone"><i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+        <div class="dropdown_wrapper">
+          <ul class="dropdown">
+            <li class="dropdown_text" id="popular">Popularité</li>
+            <li class="dropdown_text" id="date">Date</li>
+            <li class="dropdown_text" id="title">Titre</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section class="medias_articles">
-    </section>
+    <section class="medias_articles"> </section>
   </main>
   <footer class="footer">
   </footer>
@@ -54,14 +63,14 @@
   <div class="lightbox_container" id="lightBox">
     <div class="lightbox_wrapper">
       <div class="closing_cross" id="closing">
-        <i class="fa-solid fa-xmark"></i>
+        <i class="fa-solid fa-xmark fa-2xl darkredicone"></i>
       </div>
       <div class="image_switch">
         <div class="previous" id="previousBtn">
-          <i class="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-left fa-2xl darkredicone"></i>
         </div>
         <div class="next" id="nextBtn">
-          <i class="fa-solid fa-chevron-right"></i>
+          <i class="fa-solid fa-chevron-right fa-2xl darkredicone"></i>
         </div>
       </div>
     </div>

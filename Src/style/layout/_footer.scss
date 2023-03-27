@@ -1,0 +1,32 @@
+/**********************************************************************/
+/*footer*/
+/**********************************************************************/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  background-color: $secondaryLightRed;
+  width: 376px;
+  height: 50px;
+  padding: 0px 34px;
+
+  .footer_like_container {
+    @include centerleft;
+    justify-content: space-between;
+    height: 100%;
+    cursor: pointer;
+
+    .footer_like_wrapper {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: 0.4s ease-in-out;
+      cursor: pointer;
+
+      &:hover i {
+        color: $primarydarkRed;
+      }
+    }
+  }
+}
