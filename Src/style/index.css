@@ -36,7 +36,7 @@ h3 {
 }
 
 .filter_title,
-.before_popular,
+.btn_text,
 .dropdown_text {
   font-weight: 700;
   size: 18px;
@@ -155,6 +155,9 @@ header h1 {
   color: #757575;
 }
 
+/**********************************************************************/
+/*******************************photographer***************************/
+/**********************************************************************/
 .photographer_main {
   width: 90%;
   margin: 0 auto;
@@ -230,7 +233,7 @@ header h1 {
   padding-left: 20px;
   cursor: pointer;
 }
-.photographer_main .filter .dropdown_container .dropdown_btn .before_popular {
+.photographer_main .filter .dropdown_container .dropdown_btn .btn_text {
   color: #ffffff;
 }
 .photographer_main .filter .dropdown_container .dropdown_btn .dropdown_icone {
@@ -251,12 +254,14 @@ header h1 {
   opacity: 0;
   background-color: #901c1c;
   width: 170px;
-  height: 155px;
   border-radius: 5px;
   padding: 1px 10px;
   text-align: left;
-  top: -98px;
-  transition: 0.6s ease-in-out;
+  top: 45px;
+  transition: 0.2s ease-in-out;
+}
+.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown {
+  height: 100%;
 }
 .photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown .dropdown_text {
   display: flex;
@@ -267,13 +272,16 @@ header h1 {
   color: #ffffff;
   cursor: pointer;
 }
+.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown #popular {
+  display: none;
+  border-top: 1px solid #ffffff;
+}
 .photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown #date {
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
 }
 .photographer_main .filter .dropdown_container .active {
   opacity: 1;
-  transform: translateY(98px);
 }
 .photographer_main .medias_articles {
   display: grid;
@@ -283,13 +291,15 @@ header h1 {
        column-gap: 8%;
   row-gap: 20px;
   grid-template-columns: 28% 28% 28%;
-  cursor: pointer;
 }
 .photographer_main .medias_articles .picture_card {
   width: 100%;
 }
-.photographer_main .medias_articles .picture_card .pictures,
-.photographer_main .medias_articles .picture_card .videos {
+.photographer_main .medias_articles .picture_card .image_container {
+  cursor: pointer;
+}
+.photographer_main .medias_articles .picture_card .image_container .pictures,
+.photographer_main .medias_articles .picture_card .image_container .videos {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
@@ -320,7 +330,9 @@ header h1 {
   color: #901c1c;
 }
 
-/***************lightbox****************/
+/**********************************************************************/
+/*********************************lightbox*****************************/
+/**********************************************************************/
 .lightbox_container {
   display: none;
   align-items: center;
@@ -373,6 +385,9 @@ header h1 {
   color: #901c1c;
 }
 
+/**********************************************************************/
+/**********************************Modal*******************************/
+/**********************************************************************/
 #contact_modal {
   display: none;
 }

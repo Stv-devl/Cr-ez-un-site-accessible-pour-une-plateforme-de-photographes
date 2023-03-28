@@ -25,20 +25,19 @@
     <section class="filter">
       <p class="filter_title">Trier par</p>
       <div class="dropdown_container">
-        <div class="dropdown_btn">
-          <p class="before_popular">Popularité</p>
+        <div class="dropdown_btn" id="dropDownBtn">
+          <p class="btn_text" id="btnText">Popularité</p>
           <div class="dropdown_icone"><i class="fa-solid fa-chevron-down"></i></div>
         </div>
-        <div class="dropdown_wrapper">
+        <div class="dropdown_wrapper" id="activeDropdown">
           <ul class="dropdown">
-            <li class="dropdown_text" id="popular">Popularité</li>
-            <li class="dropdown_text" id="date">Date</li>
-            <li class="dropdown_text" id="title">Titre</li>
+            <li class="dropdown_text btn" id="popular">Popularité</li>
+            <li class="dropdown_text btn" id="date">Date</li>
+            <li class="dropdown_text btn" id="title">Titre</li>
           </ul>
         </div>
       </div>
     </section>
-
     <section class="medias_articles"> </section>
   </main>
   <footer class="footer">
@@ -100,6 +99,7 @@
   <!-- utils -->
   <script src="./Src/scripts/utils/lightbox.js"></script>
   <script src="./Src/scripts/utils/contactForm.js"></script>
+  <script src="./Src/scripts/utils/popup.js"></script>
 </body>
 
 </html>
