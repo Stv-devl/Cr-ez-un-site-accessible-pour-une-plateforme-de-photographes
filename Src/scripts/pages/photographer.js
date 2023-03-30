@@ -4,6 +4,7 @@ class App {
     this.mediaSection = document.querySelector(".medias_articles");
     this.photographHeader = document.querySelector(".photograph-header");
     this.photographFooter = document.querySelector(".footer");
+    this.choice = "popular";
   }
 
   async displayData() {
@@ -11,48 +12,45 @@ class App {
     const mediasData = gettAllData.media;
     const photographersData = gettAllData.photographers;
 
+    //delete all display from page when when change the filter (popular, date, title)
+    this.mediaSection.innerHTML = "";
+    this.photographHeader.innerHTML = "";
+    this.photographFooter.innerHTML = "";
+
     //get photographer Id from local storage,
     const recupId = JSON.parse(localStorage.getItem("Saving Id"))[0];
+
+    //filter photographer profil with Id
+    const photographeProfilFilter = photographersData.filter(function (getId) {
+      return getId.id == recupId;
+    });
+
     //filter mediasData for get images corresponding to photographerId
     const mediasDataFilter = mediasData.filter(function (getId) {
       return getId.photographerId == recupId;
     });
+
+    //filter popularity, date and title
+    switch (this.choice) {
+      case "title":
+        mediasDataFilter.sort((a, b) => (a.title > b.title ? 1 : -1));
+        break;
+      case "date":
+        mediasDataFilter.sort((a, b) => (a.date > b.date ? 1 : -1));
+        break;
+      default:
+        mediasDataFilter.sort((a, b) => b.likes - a.likes);
+    }
+
     //send Media Datas to factory
     const sendMediaDatas = mediasDataFilter.map(
       (media) => new MediasFactory(media)
     );
-    //filter mediasDataFilter for get only videos
-    const mediasVideoFilter = sendMediaDatas.filter(function (getVideo) {
-      return getVideo.video;
-    });
-    //filter mediasDataFilter for get only images
-    const mediasImageFilter = sendMediaDatas.filter(function (getImage) {
-      return getImage.image;
-    });
 
-    //send video card to be display in dom
-    mediasVideoFilter.forEach((video) => {
-      const videoTemplate = new PortfolioVideoCards(video);
-      this.mediaSection.appendChild(videoTemplate.getPortfolioVideoCardDOM());
-    });
     //send image card to be display in dom
-    mediasImageFilter.forEach((image) => {
+    sendMediaDatas.forEach((image) => {
       const imageTemplate = new PortfolioPictureCards(image);
       this.mediaSection.appendChild(imageTemplate.getPortfolioImageCardDOM());
-    });
-
-    const articleCard = document.querySelectorAll(".picture_card");
-    //send text card to be display in dom
-    mediasDataFilter
-      .map((data) => new MediasText(data))
-      //index get the index of the map array
-      .forEach((data, index) => {
-        const mediaTextTemplate = new MediaTextCard(data);
-        articleCard[index].appendChild(mediaTextTemplate.getTextCardDOM());
-      });
-    //filter photographer profil with Id
-    const photographeProfilFilter = photographersData.filter(function (getId) {
-      return getId.id == recupId;
     });
 
     //send text card to photographerProfil
@@ -67,17 +65,43 @@ class App {
           mediaProfileTemplate.getFooterCardDOM()
         );
       });
+
     lightbox(mediasDataFilter);
-    dropdown();
+  }
+
+  //dropdown function
+  dropdown() {
+    dropDownBtn.addEventListener("click", (e) => {
+      if (activeDropdown.classList == "dropdown_wrapper active")
+        return closePopup();
+      else {
+        return openPopup();
+      }
+    });
+    popular.addEventListener("click", (e) => {
+      popular.style.display = "none";
+      btnText.textContent = "Popularité";
+      this.choice = "popular";
+      closePopup();
+      app.displayData();
+    });
+    title.addEventListener("click", (e) => {
+      popular.style.display = "flex";
+      btnText.textContent = "Title";
+      this.choice = "title";
+      closePopup();
+      app.displayData();
+    });
+    date.addEventListener("click", (e) => {
+      popular.style.display = "flex";
+      btnText.textContent = "Date";
+      this.choice = "date";
+      closePopup();
+
+      app.displayData();
+    });
   }
 }
-
-const app = new App();
-function init() {
-  app.displayData();
-}
-
-init();
 
 function lightbox(data) {
   const imageContainer = document.querySelectorAll(".image_container");
@@ -173,37 +197,17 @@ function lightbox(data) {
     const getDataCard = [data[getArrayNumber]];
     //send datas to factory, launch the dom
     getDataCard.forEach((data) => {
-      const lightBoxCard = new LightBoxFactory(data);
-      lightBoxWrapper.appendChild(lightBoxCard);
+      const lightBoxCard = new LightBoxImageCard(data);
+      lightBoxWrapper.appendChild(lightBoxCard.lightBoxImageCardDom());
+      console.log(lightBoxCard);
     });
   }
 }
 
-//dropdown function
-function dropdown() {
-  dropDownBtn.addEventListener("click", (e) => {
-    if (activeDropdown.classList == "dropdown_wrapper active")
-      return closePopup();
-    else {
-      return openPopup();
-    }
-  });
-
-  popular.addEventListener("click", (e) => {
-    closePopup();
-    popular.style.display = "none";
-    btnText.textContent = "Popularité";
-  });
-
-  title.addEventListener("click", (e) => {
-    popular.style.display = "flex";
-    btnText.textContent = "Title";
-    closePopup();
-  });
-
-  date.addEventListener("click", (e) => {
-    popular.style.display = "flex";
-    btnText.textContent = "Date";
-    closePopup();
-  });
+const app = new App();
+function init() {
+  app.displayData();
+  app.dropdown();
 }
+
+init();

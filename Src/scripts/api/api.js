@@ -18,8 +18,4 @@ class photographersApi extends Api {
   constructor(url) {
     super(url);
   }
-  /* //utile ou pas?
-  async getPhotographers() {
-    return await this.get();
-  }*/
 }
