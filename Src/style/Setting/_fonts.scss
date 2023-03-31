@@ -4,7 +4,8 @@
 /**************************setting text***************************/
 
 h1,
-h2 {
+h2,
+.form_text {
   font-size: 36px;
   font-weight: 400;
 }
@@ -23,7 +24,9 @@ h3 {
   font-size: 9px;
 }
 
-.profil_name {
+.profil_name,
+.modale_title,
+.photographer_name {
   font-size: 64px;
   font-weight: 400;
 }

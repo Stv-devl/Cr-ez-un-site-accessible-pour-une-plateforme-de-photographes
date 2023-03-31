@@ -21,10 +21,9 @@ class App {
     const recupId = JSON.parse(localStorage.getItem("Saving Id"))[0];
 
     //filter photographer profil with Id
-    const photographeProfilFilter = photographersData.filter(function (getId) {
-      return getId.id == recupId;
-    });
-
+    const photographeProfilFilter = photographersData.filter(
+      (getId) => getId.id == recupId
+    );
     //filter mediasData for get images corresponding to photographerId
     const mediasDataFilter = mediasData.filter(function (getId) {
       return getId.photographerId == recupId;
@@ -66,11 +65,51 @@ class App {
         );
       });
 
-    lightbox(mediasDataFilter);
+    const lightBox = new LightBox(mediasDataFilter);
+    lightBox.lightbox();
+    this.likeImage();
+  }
+
+  likeImage() {
+    const likeWrapper = document.querySelectorAll(".like_wrapper");
+    const footerLikeNumber = document.querySelector(".footer_like_number");
+
+    likeWrapper.forEach((heart) => {
+      heart.addEventListener("click", (e) => {
+        heart.classList.toggle("toggle_active");
+        const like = heart.children[0];
+        let likenumber = parseInt(like.textContent); //parsint for make the text be number
+        if (heart.classList.contains("toggle_active")) {
+          like.textContent = likenumber + 1;
+          launchCounting();
+        } else {
+          like.textContent = likenumber - 1;
+          launchCounting();
+        }
+      });
+    });
+
+    function launchCounting() {
+      let total = [];
+      likeWrapper.forEach((e) => {
+        total.push(parseInt(e.children[0].textContent));
+      });
+      let test = total.reduce((a, b) => a + b, 0);
+      footerLikeNumber.textContent = test;
+    }
+    launchCounting();
   }
 
   //dropdown function
   dropdown() {
+    function openPopup() {
+      activeDropdown.classList.add("active");
+    }
+
+    function closePopup() {
+      activeDropdown.classList.remove("active");
+    }
+
     dropDownBtn.addEventListener("click", (e) => {
       if (activeDropdown.classList == "dropdown_wrapper active")
         return closePopup();
@@ -103,108 +142,116 @@ class App {
   }
 }
 
-function lightbox(data) {
-  const imageContainer = document.querySelectorAll(".image_container");
-  let getArrayNumber;
-
-  //When we click on 1 picture of portfolio
-  imageContainer.forEach((article) => {
-    article.addEventListener("click", (e) => {
-      //get the url of clicked picture
-      let pictureSrc = article.children[0].getAttribute("src").split("/")[4];
-      //filter data for get all url
-      const getAllUrl = data.map((data) => {
-        return data.image || data.video;
-      });
-      //get Array number will implement a number for each picture, here we find the array index of the picture who is clicked
-      getArrayNumber = getAllUrl.findIndex((e) => e === pictureSrc);
-
-      openLightbox();
-      displayLightbox(data);
-      slideLightbox(data, getAllUrl);
+class LightBox {
+  constructor(data) {
+    this.imageContainer = document.querySelectorAll(".image_container");
+    this.lightBoxWrapper = document.querySelector(".lightbox_wrapper");
+    this.data = data;
+    this.getIndexNumber = 0;
+    this.pictureSrc = "";
+    //filter data for get all url
+    this.getAllUrl = data.map((data) => {
+      return data.image || data.video;
     });
-  });
+  }
+  lightbox() {
+    //When we click on 1 picture of portfolio
+    this.imageContainer.forEach((article) => {
+      article.addEventListener("click", (e) => {
+        //get the url of clicked picture
+        this.pictureSrc = article.children[0].getAttribute("src").split("/")[4];
+        //get Array number will implement a number for each picture, here we find the array index of the picture who is clicked
+        this.getIndexNumber = this.getAllUrl.findIndex(
+          (e) => e === this.pictureSrc
+        );
 
-  function slideLightbox(data, getAllUrl) {
+        openLightbox();
+        this.displayLightbox();
+        this.slideLightbox();
+      });
+    });
+  }
+
+  slideLightbox() {
     //event at click on cross, remove image_wrapper when we close the lightbox
     closing.addEventListener("click", (e) => {
-      deleteImageWrapper();
+      this.deleteImageWrapper();
       closeLightbox();
     });
     //next event, at click on next, remove image_wrapper, change number of getArrayNumber
-    nextBtn.addEventListener("click", (next) => {
-      deleteImageWrapper();
-      slideRight(data, getArrayNumber, getAllUrl);
+    nextBtn.addEventListener("click", (e) => {
+      this.deleteImageWrapper();
+      this.slideRight();
     });
     //previous event, at click on next, remove image_wrapper, change number of getArrayNumber
-    previousBtn.addEventListener("click", (previous) => {
-      deleteImageWrapper();
-      slideLeft(data, getAllUrl);
+    previousBtn.addEventListener("click", (e) => {
+      this.deleteImageWrapper();
+      this.slideLeft();
     });
-
     //keyboard event left
     window.addEventListener("keydown", (event) => {
       const keyboardNumber = event.key;
       if (keyboardNumber == "ArrowLeft") {
-        deleteImageWrapper();
-        slideLeft(data, getAllUrl);
+        this.deleteImageWrapper();
+        this.slideLeft();
       }
     });
     //keyboard event Right
     window.addEventListener("keydown", (event) => {
       const keyboardNumber = event.key;
       if (keyboardNumber == "ArrowRight") {
-        deleteImageWrapper();
-        slideRight(data, getAllUrl);
+        this.deleteImageWrapper();
+        this.slideRight();
       }
     });
-
     //keyboard event Delete and escape
     window.addEventListener("keydown", (event) => {
       const keyboardNumber = event.key;
-      console.log(keyboardNumber);
       if (keyboardNumber == "Escape" || keyboardNumber == "Delete") {
-        deleteImageWrapper();
+        this.deleteImageWrapper();
         closeLightbox();
       }
     });
-
-    function deleteImageWrapper() {
-      closing.parentElement.children[2].remove();
-    }
-
-    function slideRight(data, getAllUrl) {
-      if (getArrayNumber >= getAllUrl.length - 1) {
-        getArrayNumber = 0;
-      } else {
-        getArrayNumber++;
-      }
-      return displayLightbox(data);
-    }
-    function slideLeft(data, getAllUrl) {
-      if (getArrayNumber <= 0) {
-        getArrayNumber = getAllUrl.length - 1;
-      } else {
-        getArrayNumber--;
-      }
-      return displayLightbox(data);
+  }
+  //when we move on left or right or close we will delete the image wrapper
+  deleteImageWrapper() {
+    const imageWrapper = document.getElementById("imageWrapper");
+    if (imageWrapper) {
+      imageWrapper.remove();
     }
   }
-
-  function displayLightbox(data) {
-    const lightBoxWrapper = document.querySelector(".lightbox_wrapper");
+  //slide on righ
+  slideRight() {
+    if (this.getIndexNumber >= this.getAllUrl.length - 1) {
+      this.getIndexNumber = 0;
+    } else {
+      this.getIndexNumber++;
+    }
+    return this.displayLightbox();
+  }
+  //slide on left
+  slideLeft() {
+    if (this.getIndexNumber <= 0) {
+      this.getIndexNumber = this.getAllUrl.length - 1;
+    } else {
+      this.getIndexNumber--;
+    }
+    return this.displayLightbox();
+  }
+  //display the light box in the dom
+  displayLightbox() {
     //get data of picture who is selected in lightbox with the getArrayNumber
-    const getDataCard = [data[getArrayNumber]];
+    const getDataCard = [this.data[this.getIndexNumber]];
     //send datas to factory, launch the dom
     getDataCard.forEach((data) => {
       const lightBoxCard = new LightBoxImageCard(data);
-      lightBoxWrapper.appendChild(lightBoxCard.lightBoxImageCardDom());
-      console.log(lightBoxCard);
+      this.lightBoxWrapper.appendChild(lightBoxCard.lightBoxImageCardDom());
     });
   }
 }
 
 const app = new App();
+
 function init() {
   app.displayData();
   app.dropdown();

@@ -6,7 +6,7 @@ class LightBoxImageCard {
   lightBoxImageCardDom() {
     const imageWrapper = document.createElement("div");
     imageWrapper.setAttribute("class", "image_wrapper");
-
+    imageWrapper.setAttribute("id", "imageWrapper");
     if (!this.lightboxImage.video) {
       const picture = `./Src/assets/images/${this.lightboxImage.image}`;
       const img = document.createElement("img");

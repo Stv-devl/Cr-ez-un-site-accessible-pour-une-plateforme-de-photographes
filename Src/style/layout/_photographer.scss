@@ -31,18 +31,6 @@
         }
       }
       .contact_button {
-        font-size: 20px;
-        font-weight: 700;
-        color: $white;
-        padding: 11px;
-        width: 170px;
-        height: 69px;
-        border: none;
-        background-color: $primarydarkRed;
-        border-radius: 5px;
-        transition: 0.4s ease-in-out;
-        cursor: pointer;
-
         &:hover {
           background-color: $secondaryLightRed;
           color: $black;
@@ -168,6 +156,8 @@
         .like_wrapper {
           @include center;
           gap: 5px;
+          transition: 0.4s ease-in;
+          cursor: pointer;
 
           .like_number {
             transition: 0.4s ease-in;
@@ -180,6 +170,17 @@
 
           i {
             color: $primarydarkRed;
+          }
+        }
+
+        .toggle_active {
+          .like_number {
+            font-size: 18px;
+            font-weight: 700;
+            color: $primarydarkRed;
+          }
+          i {
+            scale: 1.1;
           }
         }
       }

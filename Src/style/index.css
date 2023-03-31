@@ -2,7 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 /**************************setting text***************************/
 h1,
-h2 {
+h2,
+.form_text {
   font-size: 36px;
   font-weight: 400;
 }
@@ -21,7 +22,9 @@ h3 {
   font-size: 9px;
 }
 
-.profil_name {
+.profil_name,
+.modale_title,
+.photographer_name {
   font-size: 64px;
   font-weight: 400;
 }
@@ -78,6 +81,20 @@ body {
   margin: 0 auto;
 }
 
+button {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 11px;
+  width: 170px;
+  height: 69px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+}
+
 /*************Text link & img fit & icone color***************/
 a,
 a:visited {
@@ -101,7 +118,7 @@ $breakup-desktop: 1060px;*/
 /**********************************************************************/
 /*header*/
 /**********************************************************************/
-header {
+.page_header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -109,11 +126,11 @@ header {
   height: 90px;
   cursor: pointer;
 }
-header .logo {
+.page_header .logo {
   height: 50px;
   margin-left: 100px;
 }
-header h1 {
+.page_header h1 {
   color: #901c1c;
   margin-right: 100px;
 }
@@ -188,19 +205,6 @@ header h1 {
 .photographer_main .photograph-header .profil_container .profil_wrapper .profil_tagline {
   margin-top: 15px;
   color: #525252;
-}
-.photographer_main .photograph-header .profil_container .contact_button {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  padding: 11px;
-  width: 170px;
-  height: 69px;
-  border: none;
-  background-color: #901c1c;
-  border-radius: 5px;
-  transition: 0.4s ease-in-out;
-  cursor: pointer;
 }
 .photographer_main .photograph-header .profil_container .contact_button:hover {
   background-color: #db8876;
@@ -318,6 +322,8 @@ header h1 {
   align-items: center;
   justify-content: center;
   gap: 5px;
+  transition: 0.4s ease-in;
+  cursor: pointer;
 }
 .photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper .like_number {
   transition: 0.4s ease-in;
@@ -328,6 +334,14 @@ header h1 {
 }
 .photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper i {
   color: #901c1c;
+}
+.photographer_main .medias_articles .picture_card .information_wrapper .toggle_active .like_number {
+  font-size: 18px;
+  font-weight: 700;
+  color: #901c1c;
+}
+.photographer_main .medias_articles .picture_card .information_wrapper .toggle_active i {
+  scale: 1.1;
 }
 
 /**********************************************************************/
@@ -391,53 +405,60 @@ header h1 {
 /**********************************************************************/
 #contact_modal {
   display: none;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.496);
 }
 
 .modal {
-  border-radius: 5px;
-  background-color: #db8876;
+  position: relative;
+  z-index: 11;
   width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  margin: 120px auto 0 auto;
   padding: 35px;
-  margin: auto;
+  text-align: left;
+  background-color: #db8876;
 }
-.modal .modal header {
+.modal .modal_header {
+  display: flex;
   justify-content: space-between;
-  width: 100%;
+  height: 100%;
+  margin-bottom: 19px;
 }
-.modal .modal header img {
+.modal .modal_header .close_icone {
+  margin-top: 20px;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
 }
-.modal .modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-.modal form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.modal form label {
-  color: #525252;
-  font-size: 36px;
-}
-.modal form div {
+.modal .form_container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
 }
-.modal form input {
+.modal .form_container input {
+  border: none;
   width: 100%;
   height: 68px;
-  border: none;
   border-radius: 5px;
+}
+.modal .form_container textarea {
+  border: none;
+  resize: none;
+  width: 100%;
+  height: 170px;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+.modal .form_container .form_text {
+  color: #312e2e;
+}
+.modal .contact_btn:hover {
+  color: #000000;
 }
 
 /**********************************************************************/

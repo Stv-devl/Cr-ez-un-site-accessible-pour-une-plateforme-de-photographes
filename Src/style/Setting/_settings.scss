@@ -19,6 +19,20 @@ body {
   margin: 0 auto;
 }
 
+button {
+  font-size: 20px;
+  font-weight: 700;
+  color: $white;
+  padding: 11px;
+  width: 170px;
+  height: 69px;
+  border: none;
+  background-color: $primarydarkRed;
+  border-radius: 5px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+}
+
 /*************Text link & img fit & icone color***************/
 a,
 a:visited {
