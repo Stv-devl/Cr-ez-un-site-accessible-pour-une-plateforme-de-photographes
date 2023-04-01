@@ -12,7 +12,7 @@ class App {
     const mediasData = gettAllData.media;
     const photographersData = gettAllData.photographers;
 
-    //delete all display from page when when change the filter (popular, date, title)
+    //delete all display from page when change the filter (popular, date, title)
     this.mediaSection.innerHTML = "";
     this.photographHeader.innerHTML = "";
     this.photographFooter.innerHTML = "";
@@ -25,9 +25,9 @@ class App {
       (getId) => getId.id == recupId
     );
     //filter mediasData for get images corresponding to photographerId
-    const mediasDataFilter = mediasData.filter(function (getId) {
-      return getId.photographerId == recupId;
-    });
+    const mediasDataFilter = mediasData.filter(
+      (getId) => getId.photographerId == recupId
+    );
 
     //filter popularity, date and title
     switch (this.choice) {
@@ -41,18 +41,18 @@ class App {
         mediasDataFilter.sort((a, b) => b.likes - a.likes);
     }
 
-    //send Media Datas to factory
+    //Create the media objects
     const sendMediaDatas = mediasDataFilter.map(
       (media) => new MediasFactory(media)
     );
 
-    //send image card to be display in dom
+    // Display the media objects
     sendMediaDatas.forEach((image) => {
       const imageTemplate = new PortfolioPictureCards(image);
       this.mediaSection.appendChild(imageTemplate.getPortfolioImageCardDOM());
     });
 
-    //send text card to photographerProfil
+    // Display the photographer profile
     photographeProfilFilter
       .map((data) => new ProfilModel(data))
       .forEach((data) => {
@@ -94,8 +94,8 @@ class App {
       likeWrapper.forEach((e) => {
         total.push(parseInt(e.children[0].textContent));
       });
-      let test = total.reduce((a, b) => a + b, 0);
-      footerLikeNumber.textContent = test;
+      let displayToFooter = total.reduce((a, b) => a + b, 0);
+      footerLikeNumber.textContent = displayToFooter;
     }
     launchCounting();
   }
@@ -164,7 +164,6 @@ class LightBox {
         this.getIndexNumber = this.getAllUrl.findIndex(
           (e) => e === this.pictureSrc
         );
-
         openLightbox();
         this.displayLightbox();
         this.slideLightbox();

@@ -177,7 +177,7 @@ $breakup-desktop: 1060px;*/
 /**********************************************************************/
 .photographer_main {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   /****************section photographer header**********************/
   /****************Section : Filter**********************/
   /*************Section : medias_articles***************/
@@ -411,13 +411,13 @@ $breakup-desktop: 1060px;*/
   left: 0;
   width: 100%;
   min-height: 100vh;
-  z-index: 10;
+  z-index: 15;
   background-color: rgba(255, 255, 255, 0.496);
 }
 
 .modal {
   position: relative;
-  z-index: 11;
+  z-index: 20;
   width: 50%;
   margin: 120px auto 0 auto;
   padding: 35px;
@@ -440,11 +440,17 @@ $breakup-desktop: 1060px;*/
   display: flex;
   flex-direction: column;
 }
+.modal .form_container span {
+  font-weight: 700;
+  color: #901c1c;
+}
 .modal .form_container input {
   border: none;
   width: 100%;
   height: 68px;
   border-radius: 5px;
+  padding-left: 15px;
+  font-size: 20px;
 }
 .modal .form_container textarea {
   border: none;
@@ -452,10 +458,14 @@ $breakup-desktop: 1060px;*/
   width: 100%;
   height: 170px;
   border-radius: 5px;
-  margin-bottom: 25px;
+  padding: 15px;
+  font-size: 20px;
 }
 .modal .form_container .form_text {
   color: #312e2e;
+}
+.modal .contact_btn {
+  margin-top: 25px;
 }
 .modal .contact_btn:hover {
   color: #000000;
@@ -479,15 +489,9 @@ $breakup-desktop: 1060px;*/
   justify-content: flex-start;
   justify-content: space-between;
   height: 100%;
-  cursor: pointer;
 }
 .footer .footer_like_container .footer_like_wrapper {
   display: flex;
   align-items: center;
   gap: 7px;
-  transition: 0.4s ease-in-out;
-  cursor: pointer;
-}
-.footer .footer_like_container .footer_like_wrapper:hover i {
-  color: #901c1c;
 }/*# sourceMappingURL=index.css.map */

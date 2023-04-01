@@ -1,7 +1,6 @@
 class LightBoxImageCard {
   constructor(data) {
     this.lightboxImage = data;
-    console.log(!this.lightboxImage.video);
   }
   lightBoxImageCardDom() {
     const imageWrapper = document.createElement("div");
@@ -21,7 +20,6 @@ class LightBoxImageCard {
       video.setAttribute("class", "lightbox_videos");
       const source = document.createElement("source");
       source.setAttribute("src", videosource);
-      console.log(source);
       source.setAttribute("type", "video/mp4");
       video.appendChild(source);
       imageWrapper.appendChild(video);
