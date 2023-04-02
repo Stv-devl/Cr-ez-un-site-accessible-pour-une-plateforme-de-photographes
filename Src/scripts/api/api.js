@@ -19,3 +19,5 @@ class photographersApi extends Api {
     super(url);
   }
 }
+
+export default photographersApi;

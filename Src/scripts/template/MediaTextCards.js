@@ -24,3 +24,4 @@ class MediaTextCard {
     return informationwrapper;
   }
 }
+export default MediaTextCard;

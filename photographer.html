@@ -15,7 +15,7 @@
 <body>
   <header class="page_header">
     <a href="index.html">
-      <img src="./Src/assets/images/logo.png" class="logo" /></a>
+      <img src="./Src/assets/images/logo.png" class="logo" alt="Fisheye Home page"></a>
   </header>
 
   <main id="main" class="photographer_main">
@@ -23,8 +23,9 @@
     <section class=" photograph-header"></section>
 
     <section class="filter">
+
       <p class="filter_title">Trier par</p>
-      <div class="dropdown_container">
+      <div class="dropdown_container" aria-label="Order by">
         <div class="dropdown_btn" id="dropDownBtn">
           <p class="btn_text" id="btnText">Popularité</p>
           <div class="dropdown_icone"><i class="fa-solid fa-chevron-down"></i></div>
@@ -50,75 +51,73 @@
           <p class="modale_title">Contactez-moi</p>
           <p class="photographer_name">Photographe<p>
         </div>
-        <img class="close_icone" src="./Src/assets/icons/close.svg" onclick="closeModal()" />
+        <img class="close_icone" id="closeModal" src="./Src/assets/icons/close.svg" alt="Close contact form">
       </header>
       <form>
-
-        <form>
+        <form method="post">
           <div class="form_container">
             <div class="firstname_container">
-              <p class="form_text">Prénom</p>
-              <input class="input" type="text" autocomplete="off" id="firstname">
+              <label class="form_text" aria-label="firstname label">Prénom</label>
+              <input class="input" type="text" autocomplete="off" id="firstname" aria-label="firstname input">
               <span id="firstnameError"></span>
             </div>
 
             <div class="lastname_container">
-              <p class="form_text">Nom</p>
-              <input class="input" type="text" autocomplete="off" id="lastname">
+              <label class="form_text" aria-label="lastname label">Nom</label>
+              <input class="input" type="text" autocomplete="off" id="lastname" aria-label="lastname input">
               <span id="lastnameError"></span>
             </div>
 
             <div class="email_container">
-              <p class="form_text">Email</p>
-              <input class="input" type="text" autocomplete="off" id="email">
+              <label class="form_text" aria-label="email label">Email</label>
+              <input class="input" type="text" autocomplete="off" id="email" aria-label="email input">
               <span id="emailError"></span>
             </div>
 
             <div class="Textarea_container">
-              <p class="form_text">Votre message</p>
-              <textarea class="input" name="textarea" id="textArea"></textarea>
+              <label class="form_text" aria-label="your text label">Votre message</label>
+              <textarea class="input" name="textarea" id="textArea" aria-label="your text textarea"></textarea>
               <span id="textAreaError"></span>
             </div>
           </div>
-          <button class="contact_btn">Envoyer</button>
+          <button class="contact_btn" aria-label="send form button">Envoyer</button>
         </form>
     </div>
   </div>
   <!-- lightbox -->
-  <div class="lightbox_container" id="lightBox">
+  <div class="lightbox_container" id="lightBox" aria-label="image closeup view">
     <div class="lightbox_wrapper">
-      <div class="closing_cross" id="closing">
+      <div class="closing_cross" id="closing" aria-label="Close dialog">
         <i class="fa-solid fa-xmark fa-2xl darkredicone"></i>
       </div>
       <div class="image_switch">
-        <div class="previous" id="previousBtn">
+        <div class="previous" id="previousBtn" aria-label="Previous image">
           <i class="fa-solid fa-chevron-left fa-2xl darkredicone"></i>
         </div>
-        <div class="next" id="nextBtn">
+        <div class="next" id="nextBtn" aria-label="Next image">
           <i class="fa-solid fa-chevron-right fa-2xl darkredicone"></i>
         </div>
       </div>
     </div>
   </div>
   <!-- Api -->
-  <script src="./Src/scripts/api/api.js"></script>
+  <script type="module" src="./Src/scripts/api/api.js"></script>
   <!-- Pages -->
-  <script src="./Src/scripts/pages/photographer.js"></script>
+  <script type="module" src="./Src/scripts/pages/photographer.js"></script>
   <!-- model -->
-  <script src="./Src/scripts/models/mediaImageModel.js"></script>
-  <script src="./Src/scripts/models/mediaVideoModel.js"></script>
-  <script src="./Src/scripts/models/photographersModel.js"></script>
-  <script src="./Src/scripts/models/profilModel.js"></script>
+  <script type="module" src="./Src/scripts/models/mediaImageModel.js"></script>
+  <script type="module" src="./Src/scripts/models/mediaVideoModel.js"></script>
+  <script type="module" src="./Src/scripts/models/photographersModel.js"></script>
+  <script type="module" src="./Src/scripts/models/profilModel.js"></script>
   <!-- factory -->
-  <script src="./Src/scripts/factories/mediaFactory.js"></script>
+  <script type="module" src="./Src/scripts/factories/mediaFactory.js"></script>
   <!-- template -->
-  <script src="./Src/scripts/template/photographersCards.js"></script>
-  <script src="./Src/scripts/template/portfolioPictureCards.js"></script>
-  <script src="./Src/scripts/template/ProfilCard.js"></script>
-  <script src="./Src/scripts/template/lightboxImageCard.js"></script>
+  <script type="module" src="./Src/scripts/template/photographersCards.js"></script>
+  <script type="module" src="./Src/scripts/template/portfolioPictureCards.js"></script>
+  <script type="module" src="./Src/scripts/template/ProfilCard.js"></script>
+  <script type="module" src="./Src/scripts/template/lightboxImageCard.js"></script>
   <!-- utils -->
-  <script src="./Src/scripts/utils/lightbox.js"></script>
-  <script src="./Src/scripts/utils/contactForm.js"></script>
+  <script type="module" src="./Src/scripts/utils/contactForm.js"></script>
 </body>
 
 </html>

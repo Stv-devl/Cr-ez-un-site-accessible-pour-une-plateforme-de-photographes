@@ -11,6 +11,7 @@ class LightBoxImageCard {
       const img = document.createElement("img");
       img.setAttribute("src", picture);
       img.setAttribute("class", "lightbox_pictures");
+      img.setAttribute("alt", this.lightboxImage.title);
       imageWrapper.appendChild(img);
     } else {
       const videosource = `./Src/assets/images/${this.lightboxImage.video}`;
@@ -18,6 +19,7 @@ class LightBoxImageCard {
       video.setAttribute("controls", "");
       video.setAttribute("preload", "metadata");
       video.setAttribute("class", "lightbox_videos");
+      video.setAttribute("alt", this.lightboxImage.title);
       const source = document.createElement("source");
       source.setAttribute("src", videosource);
       source.setAttribute("type", "video/mp4");
@@ -32,3 +34,4 @@ class LightBoxImageCard {
     return imageWrapper;
   }
 }
+export default LightBoxImageCard;

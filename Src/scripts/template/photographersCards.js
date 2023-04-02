@@ -8,9 +8,11 @@ class photographersCard {
     const a = document.createElement("a");
     a.setAttribute("href", `photographer.html`);
     a.setAttribute("class", "photographer_btn");
+    a.setAttribute("aria-label", this.profils.name);
     article.setAttribute("id", this.profils.id);
     const img = document.createElement("img");
     img.setAttribute("src", this.profils.portrait);
+    img.setAttribute("alt", this.profils.name);
     const h2 = document.createElement("h2");
     h2.textContent = this.profils.name;
     const h3 = document.createElement("h3");
@@ -31,3 +33,5 @@ class photographersCard {
     return article;
   }
 }
+
+export default photographersCard;

@@ -7,16 +7,22 @@ class PortfolioPictureCards {
     article.setAttribute("class", "picture_card");
     const container = document.createElement("div");
     container.setAttribute("class", "image_container");
+    container.setAttribute(
+      "aria-label",
+      `${this.portfolio.title}, closeup view`
+    );
     if (this.portfolio.image) {
       const img = document.createElement("img");
       img.setAttribute("src", this.portfolio.image);
       img.setAttribute("class", "pictures");
+      img.setAttribute("alt", this.portfolio.title);
       article.appendChild(container);
       container.appendChild(img);
     } else {
       const video = document.createElement("video");
       video.setAttribute("src", this.portfolio.video);
       video.setAttribute("class", "videos");
+      video.setAttribute("alt", this.portfolio.title);
       article.appendChild(container);
       container.appendChild(video);
     }
@@ -34,7 +40,7 @@ class PortfolioPictureCards {
     likenumber.textContent = this.portfolio.like;
     const i = document.createElement("i");
     i.setAttribute("class", "fa-solid fa-heart");
-
+    i.setAttribute("aria-label", "likes");
     informationwrapper.appendChild(titles);
     informationwrapper.appendChild(likewrapper);
     likewrapper.appendChild(likenumber);
@@ -44,3 +50,5 @@ class PortfolioPictureCards {
     return article;
   }
 }
+
+export default PortfolioPictureCards;

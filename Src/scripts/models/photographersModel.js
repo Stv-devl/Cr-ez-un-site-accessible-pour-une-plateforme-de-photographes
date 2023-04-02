@@ -30,3 +30,5 @@ class Photographers {
     return this._price;
   }
 }
+
+export default Photographers;

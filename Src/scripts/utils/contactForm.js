@@ -1,7 +1,32 @@
+//import api
+import photographersApi from "../api/api.js";
+
+class PhotographerName {
+  constructor() {
+    this.dataApi = new photographersApi("./Src/data/photographers.json");
+    this.photographerName = document.querySelector(".photographer_name");
+  }
+  async displayPhotographerName() {
+    const gettAllData = await this.dataApi.get();
+    const photographersData = gettAllData.photographers;
+    //get photographer Id from local storage,
+    const recupId = JSON.parse(localStorage.getItem("Saving Id"))[0];
+    //filter photographer profil with Id
+    const photographeProfilFilter = photographersData.filter(
+      (getId) => getId.id == recupId
+    );
+    //display photographer name on dom
+    this.photographerName.textContent = photographeProfilFilter[0].name;
+  }
+}
+
 class ContactForm {
   constructor() {
     this.dataApi = new photographersApi("./Src/data/photographers.json");
     this.photographerName = document.querySelector(".photographer_name");
+    this.openmodal = document.getElementById("openModal");
+    this.closemodal = document.getElementById("closeModal");
+    this.modal = document.getElementById("contact_modal");
     this.inputs = document.querySelectorAll(".input");
     this.form = document.querySelector("form");
     this.error = {
@@ -20,17 +45,13 @@ class ContactForm {
     this.inputValue;
   }
 
-  async displayPhotographerName() {
-    const gettAllData = await this.dataApi.get();
-    const photographersData = gettAllData.photographers;
-    //get photographer Id from local storage,
-    const recupId = JSON.parse(localStorage.getItem("Saving Id"))[0];
-    //filter photographer profil with Id
-    const photographeProfilFilter = photographersData.filter(
-      (getId) => getId.id == recupId
-    );
-    //display photographer name on dom
-    this.photographerName.textContent = photographeProfilFilter[0].name;
+  displayModal() {
+    this.modal.style.display = "block";
+    this.getInputData();
+    this.submit();
+  }
+  closeModal() {
+    this.modal.style.display = "none";
   }
 
   //function for display error message and border or delete it
@@ -122,17 +143,13 @@ class ContactForm {
       }
     });
   }
+  //launching function for open and close modal on click, launch the photographername class
+  launch() {
+    this.openmodal.addEventListener("click", (e) => this.displayModal());
+    this.closemodal.addEventListener("click", (e) => this.closeModal());
+    const photographername = new PhotographerName();
+    photographername.displayPhotographerName();
+  }
 }
 
-function displayModal() {
-  const contactform = new ContactForm();
-  const modal = document.getElementById("contact_modal");
-  modal.style.display = "block";
-  contactform.displayPhotographerName();
-  contactform.getInputData();
-  contactform.submit();
-}
-function closeModal() {
-  const modal = document.getElementById("contact_modal");
-  modal.style.display = "none";
-}
+export default ContactForm;

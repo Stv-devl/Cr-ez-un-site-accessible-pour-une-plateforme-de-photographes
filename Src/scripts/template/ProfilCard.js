@@ -23,10 +23,12 @@ class ProfilCard {
     const button = document.createElement("button");
     const text = document.createTextNode("Contactez-moi");
     button.setAttribute("class", "contact_button");
-    button.setAttribute("onclick", "displayModal()");
+    button.setAttribute("id", "openModal");
+    button.setAttribute("aria-label", "Contact Me");
     //img
     const profilImg = document.createElement("img");
     profilImg.setAttribute("class", "profil_image");
+    profilImg.setAttribute("alt", this.profil.name);
     profilImg.setAttribute("src", this.profil.portrait);
     //appendchild
     profilcontainer.appendChild(profilWrapper);
@@ -63,3 +65,4 @@ class ProfilCard {
     return likeContainer;
   }
 }
+export default ProfilCard;

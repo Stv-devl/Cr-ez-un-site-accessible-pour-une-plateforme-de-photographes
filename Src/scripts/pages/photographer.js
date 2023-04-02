@@ -1,3 +1,23 @@
+//api
+import photographersApi from "../api/api.js";
+//factory
+import MediasFactory from "../factories/mediaFactory.js";
+//model
+/*
+import MediasImage from "../models/mediaImageModel.js";
+import MediasVideo from "../models/mediaVideoModel.js";
+import Photographers from "../models/photographersModel.js";*/
+import ProfilModel from "../models/profilModel.js";
+//template
+import LightBoxImageCard from "../template/lightboxImageCard.js";
+/*
+import MediaTextCard from "../template/MediaTextCards.js";
+import photographersCard from "../template/photographersCards.js";*/
+import PortfolioPictureCards from "../template/portfolioPictureCards.js";
+import ProfilCard from "../template/ProfilCard.js";
+//template
+import ContactForm from "../utils/contactForm.js";
+
 class App {
   constructor() {
     this.dataApi = new photographersApi("./Src/data/photographers.json");
@@ -66,8 +86,10 @@ class App {
       });
 
     const lightBox = new LightBox(mediasDataFilter);
+    const contactform = new ContactForm();
     lightBox.lightbox();
     this.likeImage();
+    contactform.launch();
   }
 
   likeImage() {
@@ -154,6 +176,7 @@ class LightBox {
       return data.image || data.video;
     });
   }
+
   lightbox() {
     //When we click on 1 picture of portfolio
     this.imageContainer.forEach((article) => {
@@ -164,7 +187,7 @@ class LightBox {
         this.getIndexNumber = this.getAllUrl.findIndex(
           (e) => e === this.pictureSrc
         );
-        openLightbox();
+        this.openLightbox();
         this.displayLightbox();
         this.slideLightbox();
       });
@@ -175,7 +198,7 @@ class LightBox {
     //event at click on cross, remove image_wrapper when we close the lightbox
     closing.addEventListener("click", (e) => {
       this.deleteImageWrapper();
-      closeLightbox();
+      this.closeLightbox();
     });
     //next event, at click on next, remove image_wrapper, change number of getArrayNumber
     nextBtn.addEventListener("click", (e) => {
@@ -208,7 +231,7 @@ class LightBox {
       const keyboardNumber = event.key;
       if (keyboardNumber == "Escape" || keyboardNumber == "Delete") {
         this.deleteImageWrapper();
-        closeLightbox();
+        this.closeLightbox();
       }
     });
   }
@@ -247,6 +270,12 @@ class LightBox {
       this.lightBoxWrapper.appendChild(lightBoxCard.lightBoxImageCardDom());
     });
   }
+  openLightbox() {
+    lightBox.style.display = "flex";
+  }
+  closeLightbox() {
+    lightBox.style.display = "none";
+  }
 }
 
 const app = new App();
@@ -257,3 +286,5 @@ function init() {
 }
 
 init();
+
+export default App;

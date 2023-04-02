@@ -30,3 +30,4 @@ class MediasVideo {
     return `./Src/assets/images/${this._video}`;
   }
 }
+export default MediasVideo;

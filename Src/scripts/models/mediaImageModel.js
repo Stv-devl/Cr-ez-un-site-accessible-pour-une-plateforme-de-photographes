@@ -31,3 +31,5 @@ class MediasImage {
     return `./Src/assets/images/${this._image}`;
   }
 }
+
+export default MediasImage;

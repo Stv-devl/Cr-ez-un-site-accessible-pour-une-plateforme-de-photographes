@@ -1,3 +1,10 @@
+//api
+import photographersApi from "../api/api.js";
+//model
+import Photographers from "../models/photographersModel.js";
+//template
+import photographersCard from "../template/photographersCards.js";
+
 class App {
   constructor() {
     //get the Api
