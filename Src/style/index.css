@@ -42,7 +42,7 @@ h3 {
 .btn_text,
 .dropdown_text {
   font-weight: 700;
-  size: 18px;
+  font-size: 18px;
 }
 
 .lightbox_title,
@@ -81,7 +81,8 @@ body {
   margin: 0 auto;
 }
 
-button {
+.contact_button,
+.contact_btn {
   font-size: 20px;
   font-weight: 700;
   color: #ffffff;
@@ -264,23 +265,23 @@ $breakup-desktop: 1060px;*/
   top: 45px;
   transition: 0.2s ease-in-out;
 }
-.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown {
-  height: 100%;
-}
-.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown .dropdown_text {
+.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown_text {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  border: none;
+  background: none;
   padding-left: 10px;
   height: 51px;
+  width: 100%;
   color: #ffffff;
   cursor: pointer;
 }
-.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown #popular {
+.photographer_main .filter .dropdown_container .dropdown_wrapper #popular {
   display: none;
   border-top: 1px solid #ffffff;
 }
-.photographer_main .filter .dropdown_container .dropdown_wrapper .dropdown #date {
+.photographer_main .filter .dropdown_container .dropdown_wrapper #date {
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
 }

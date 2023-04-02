@@ -23,19 +23,25 @@
     <section class=" photograph-header"></section>
 
     <section class="filter">
-
       <p class="filter_title">Trier par</p>
-      <div class="dropdown_container" aria-label="Order by">
-        <div class="dropdown_btn" id="dropDownBtn">
+      <div class="dropdown_container">
+
+        <div class="dropdown_btn" id="dropDownBtn" role="button" aria-haspopup="listbox" aria-expanded="false"
+          tabindex="0" aria-label="Select your filter">
           <p class="btn_text" id="btnText">Popularité</p>
-          <div class="dropdown_icone"><i class="fa-solid fa-chevron-down"></i></div>
+          <div class="dropdown_icone"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></div>
         </div>
+
         <div class="dropdown_wrapper" id="activeDropdown">
-          <ul class="dropdown">
-            <li class="dropdown_text btn" id="popular">Popularité</li>
-            <li class="dropdown_text btn" id="date">Date</li>
-            <li class="dropdown_text btn" id="title">Titre</li>
-          </ul>
+
+          <button class="dropdown_text btn" id="popular" role="option" aria-label="Filter by popularity"
+            aria-labelledby="dropDownBtn">Popularité</button>
+
+          <button class="dropdown_text btn" id="date" role="option" aria-label="Filter by date"
+            aria-labelledby="dropDownBtn">Date</button>
+
+          <button class="dropdown_text btn" id="title" role="option" aria-label="Filter by title"
+            aria-labelledby="dropDownBtn">Titre</button>
         </div>
       </div>
     </section>
@@ -88,14 +94,14 @@
   <div class="lightbox_container" id="lightBox" aria-label="image closeup view">
     <div class="lightbox_wrapper">
       <div class="closing_cross" id="closing" aria-label="Close dialog">
-        <i class="fa-solid fa-xmark fa-2xl darkredicone"></i>
+        <i class="fa-solid fa-xmark fa-2xl darkredicone" aria-hidden="true"></i>
       </div>
       <div class="image_switch">
         <div class="previous" id="previousBtn" aria-label="Previous image">
-          <i class="fa-solid fa-chevron-left fa-2xl darkredicone"></i>
+          <i class="fa-solid fa-chevron-left fa-2xl darkredicone" aria-hidden="true"></i>
         </div>
         <div class="next" id="nextBtn" aria-label="Next image">
-          <i class="fa-solid fa-chevron-right fa-2xl darkredicone"></i>
+          <i class="fa-solid fa-chevron-right fa-2xl darkredicone" aria-hidden="true"></i>
         </div>
       </div>
     </div>
