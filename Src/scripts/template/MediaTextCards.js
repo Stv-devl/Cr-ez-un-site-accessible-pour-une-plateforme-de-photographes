@@ -17,6 +17,7 @@ class MediaTextCard {
     likenumber.textContent = this.text.like;
     const i = document.createElement("i");
     i.setAttribute("class", "fa-solid fa-heart");
+    i.setAttribute("aria-hidden", "true");
     informationwrapper.appendChild(titles);
     informationwrapper.appendChild(likewrapper);
     likewrapper.appendChild(likenumber);

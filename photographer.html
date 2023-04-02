@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <link href="./Src/style/index.css" rel="stylesheet" type="text/css" />
@@ -26,22 +26,23 @@
       <p class="filter_title">Trier par</p>
       <div class="dropdown_container">
 
-        <div class="dropdown_btn" id="dropDownBtn" role="button" aria-haspopup="listbox" aria-expanded="false"
-          tabindex="0" aria-label="Select your filter">
+        <button class="dropdown_btn" id="dropDownBtn" role="button" aria-haspopup="listbox" aria-expanded="false"
+          aria-label="Select your filter" aria-controls="activeDropdown" tabindex="0">
+
           <p class="btn_text" id="btnText">Popularité</p>
           <div class="dropdown_icone"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></div>
-        </div>
+        </button>
 
-        <div class="dropdown_wrapper" id="activeDropdown">
+        <div class="dropdown_wrapper" id="activeDropdown" role="listbox">
 
           <button class="dropdown_text btn" id="popular" role="option" aria-label="Filter by popularity"
-            aria-labelledby="dropDownBtn">Popularité</button>
+            aria-labelledby="dropDownBtn" aria-selected="true" tabindex="-1">Popularité</button>
 
           <button class="dropdown_text btn" id="date" role="option" aria-label="Filter by date"
-            aria-labelledby="dropDownBtn">Date</button>
+            aria-labelledby="dropDownBtn" aria-selected="false" tabindex="-1">Date</button>
 
           <button class="dropdown_text btn" id="title" role="option" aria-label="Filter by title"
-            aria-labelledby="dropDownBtn">Titre</button>
+            aria-labelledby="dropDownBtn" aria-selected="false" tabindex="-1  ">Titre</button>
         </div>
       </div>
     </section>

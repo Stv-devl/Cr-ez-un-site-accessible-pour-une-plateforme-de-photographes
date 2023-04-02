@@ -38,3 +38,11 @@
 @mixin shadow {
   box-shadow: 2px 5px 8px rgb(72, 72, 72);
 }
+
+@mixin focus {
+  //for select element for keyboard accessibility
+  &:focus-visible {
+    padding: 5px;
+    outline: 3px dashed black;
+  }
+}

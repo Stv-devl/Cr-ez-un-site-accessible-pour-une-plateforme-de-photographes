@@ -9,17 +9,17 @@ h2,
 }
 
 h3 {
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 400;
 }
 
 .photographer_tag {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .salary {
-  font-size: 9px;
+  font-size: 13px;
 }
 
 .profil_name,
@@ -81,6 +81,15 @@ body {
   margin: 0 auto;
 }
 
+button {
+  border: none;
+  background: none;
+}
+button:focus-visible {
+  padding: 5px;
+  outline: 3px dashed black;
+}
+
 .contact_button,
 .contact_btn {
   font-size: 20px;
@@ -101,6 +110,11 @@ a,
 a:visited {
   color: black;
   text-decoration: none;
+}
+a:focus-visible,
+a:visited:focus-visible {
+  padding: 5px;
+  outline: 3px dashed black;
 }
 
 img {
@@ -269,8 +283,6 @@ $breakup-desktop: 1060px;*/
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border: none;
-  background: none;
   padding-left: 10px;
   height: 51px;
   width: 100%;
@@ -301,6 +313,7 @@ $breakup-desktop: 1060px;*/
   width: 100%;
 }
 .photographer_main .medias_articles .picture_card .image_container {
+  width: 100%;
   cursor: pointer;
 }
 .photographer_main .medias_articles .picture_card .image_container .pictures,

@@ -49,9 +49,9 @@ class ProfilCard {
     likeWrapper.setAttribute("class", "footer_like_wrapper");
     const likeNumber = document.createElement("p");
     likeNumber.setAttribute("class", "footer_like_number");
-    likeNumber.textContent = "297 081";
+    likeNumber.textContent = "";
     const likeIcone = document.createElement("i");
-
+    likeIcone.setAttribute("aria-label", "likes");
     likeIcone.setAttribute("class", "fa-solid fa-heart fa-lg");
     const salary = document.createElement("p");
     salary.setAttribute("class", "footer_salary");

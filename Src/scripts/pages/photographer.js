@@ -124,17 +124,23 @@ class App {
 
   //dropdown function
   dropdown() {
+    const dropdownItems = document.querySelectorAll(".dropdown_text");
     function openPopup() {
       activeDropdown.classList.add("active");
+      dropdownItems.forEach((item) => item.setAttribute("tabindex", "0"));
+      dropDownBtn.setAttribute("aria-expanded", "true");
+      dropDownBtn.setAttribute("tabindex", "0");
     }
 
     function closePopup() {
       activeDropdown.classList.remove("active");
+      dropdownItems.forEach((item) => item.setAttribute("tabindex", "-1"));
+      dropDownBtn.setAttribute("aria-expanded", "false");
+      dropDownBtn.setAttribute("tabindex", "0");
     }
 
     dropDownBtn.addEventListener("click", (e) => {
-      if (activeDropdown.classList == "dropdown_wrapper active")
-        return closePopup();
+      if (activeDropdown.classList.contains("active")) return closePopup();
       else {
         return openPopup();
       }
@@ -158,10 +164,13 @@ class App {
       btnText.textContent = "Date";
       this.choice = "date";
       closePopup();
-
       app.displayData();
     });
   }
+}
+
+class LikeImplementing {
+  constructor() {}
 }
 
 class LightBox {

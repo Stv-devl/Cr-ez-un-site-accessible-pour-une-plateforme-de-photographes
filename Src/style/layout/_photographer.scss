@@ -98,8 +98,6 @@
 
         .dropdown_text {
           @include centerleft;
-          border: none;
-          background: none;
           padding-left: 10px;
           height: 51px;
           width: 100%;
@@ -136,6 +134,7 @@
       width: 100%;
 
       .image_container {
+        width: 100%;
         cursor: pointer;
 
         .pictures,
