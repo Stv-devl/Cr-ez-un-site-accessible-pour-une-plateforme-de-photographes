@@ -39,7 +39,6 @@ h3 {
 }
 
 .filter_title,
-.btn_text,
 .dropdown_text {
   font-weight: 700;
   font-size: 18px;
@@ -48,10 +47,6 @@ h3 {
 .lightbox_title,
 .img_title {
   font-size: 24px;
-}
-
-.like_number {
-  font-size: 16px;
 }
 
 .footer_like_number,
@@ -245,34 +240,36 @@ $breakup-desktop: 1060px;*/
 }
 .photographer_main .filter .dropdown_container {
   position: relative;
+  background-color: #901c1c;
   z-index: 5;
 }
 .photographer_main .filter .dropdown_container .dropdown_btn {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
+  z-index: 7;
   width: 170px;
   height: 51px;
-  background-color: #901c1c;
   border-radius: 5px;
   padding-left: 20px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
   cursor: pointer;
 }
-.photographer_main .filter .dropdown_container .dropdown_btn .btn_text {
-  color: #ffffff;
-}
-.photographer_main .filter .dropdown_container .dropdown_btn .dropdown_icone {
+.photographer_main .filter .dropdown_container .dropdown_icone {
   position: absolute;
-  z-index: 10;
+  z-index: 6;
   color: #ffffff;
   right: 15px;
   top: 16px;
   cursor: pointer;
-  transform: rotate(180deg);
+  transform: rotate(360deg);
   transition: 0.6s ease-in-out;
 }
-.photographer_main .filter .dropdown_container .dropdown_btn .dropdown_icone .rotate {
-  transform: rotate(0);
+.photographer_main .filter .dropdown_container .rotate {
+  transform: rotate(180deg);
 }
 .photographer_main .filter .dropdown_container .dropdown_wrapper {
   position: absolute;
@@ -333,35 +330,39 @@ $breakup-desktop: 1060px;*/
 .photographer_main .medias_articles .picture_card .information_wrapper {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 .photographer_main .medias_articles .picture_card .information_wrapper .img_title {
   color: #901c1c;
 }
 .photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
   gap: 5px;
-  transition: 0.4s ease-in;
+  width: 100px;
   cursor: pointer;
 }
-.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper .like_number {
+.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper i {
+  font-size: 16px;
+  color: #901c1c;
   transition: 0.4s ease-in;
 }
-.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper .cliked {
-  color: #901c1c;
-  font-size: 24px;
+.photographer_main .medias_articles .picture_card .information_wrapper .text_button {
+  position: absolute;
+  font-size: 16px;
+  top: 4px;
+  right: 23px;
+  transition: 0.4s ease-in;
 }
-.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper i {
-  color: #901c1c;
+.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper.toggle_active i {
+  transform: scale(1.15);
 }
-.photographer_main .medias_articles .picture_card .information_wrapper .toggle_active .like_number {
+.photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper.toggle_active + .text_button {
   font-size: 18px;
   font-weight: 700;
+  top: 3px;
   color: #901c1c;
-}
-.photographer_main .medias_articles .picture_card .information_wrapper .toggle_active i {
-  scale: 1.1;
 }
 
 /**********************************************************************/

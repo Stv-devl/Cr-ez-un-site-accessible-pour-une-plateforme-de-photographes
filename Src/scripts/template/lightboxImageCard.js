@@ -19,7 +19,7 @@ class LightBoxImageCard {
       video.setAttribute("controls", "");
       video.setAttribute("preload", "metadata");
       video.setAttribute("class", "lightbox_videos");
-      video.setAttribute("alt", this.lightboxImage.title);
+      video.setAttribute("title", this.lightboxImage.title);
       const source = document.createElement("source");
       source.setAttribute("src", videosource);
       source.setAttribute("type", "video/mp4");

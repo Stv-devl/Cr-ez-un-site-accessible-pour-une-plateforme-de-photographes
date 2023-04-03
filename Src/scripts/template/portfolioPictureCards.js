@@ -27,7 +27,7 @@ class PortfolioPictureCards {
       video.setAttribute("src", this.portfolio.video);
       video.setAttribute("class", "videos");
       video.setAttribute(
-        "alt",
+        "title",
         `${this.portfolio.title} from ${this.portfolio.name}`
       );
       article.appendChild(container);
@@ -42,15 +42,17 @@ class PortfolioPictureCards {
     /****like_wrapper****/
     const likewrapper = document.createElement("button");
     likewrapper.setAttribute("class", "like_wrapper");
-    const likenumber = document.createElement("p");
-    likenumber.setAttribute("class", "like_number");
-    likenumber.textContent = this.portfolio.like;
     const i = document.createElement("i");
     i.setAttribute("class", "fa-solid fa-heart");
     i.setAttribute("aria-label", "likes");
+    /****span for text in button****/
+    const textbutton = document.createElement("span");
+    textbutton.setAttribute("class", "text_button");
+    textbutton.textContent = this.portfolio.like;
+
     informationwrapper.appendChild(titles);
     informationwrapper.appendChild(likewrapper);
-    likewrapper.appendChild(likenumber);
+    informationwrapper.appendChild(textbutton);
     likewrapper.appendChild(i);
     article.appendChild(informationwrapper);
 

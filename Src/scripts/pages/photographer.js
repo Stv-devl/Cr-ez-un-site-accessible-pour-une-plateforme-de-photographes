@@ -96,12 +96,14 @@ class App {
     const likeWrapper = document.querySelectorAll(".like_wrapper");
     const footerLikeNumber = document.querySelector(".footer_like_number");
 
-    likeWrapper.forEach((heart) => {
-      heart.addEventListener("click", (e) => {
-        heart.classList.toggle("toggle_active");
-        const like = heart.children[0];
+    likeWrapper.forEach((likeWrapper) => {
+      likeWrapper.addEventListener("click", (e) => {
+        e.preventDefault();
+        likeWrapper.classList.toggle("toggle_active");
+
+        let like = likeWrapper.parentElement.children[2];
         let likenumber = parseInt(like.textContent); //parsint for make the text be number
-        if (heart.classList.contains("toggle_active")) {
+        if (likeWrapper.classList.contains("toggle_active")) {
           like.textContent = likenumber + 1;
           launchCounting();
         } else {
@@ -114,7 +116,7 @@ class App {
     function launchCounting() {
       let total = [];
       likeWrapper.forEach((e) => {
-        total.push(parseInt(e.children[0].textContent));
+        total.push(parseInt(e.textContent));
       });
       let displayToFooter = total.reduce((a, b) => a + b, 0);
       footerLikeNumber.textContent = displayToFooter;
@@ -125,8 +127,11 @@ class App {
   //dropdown function
   dropdown() {
     const dropdownItems = document.querySelectorAll(".dropdown_text");
+    const dropdownIcone = document.querySelector(".dropdown_icone");
+
     function openPopup() {
       activeDropdown.classList.add("active");
+      dropdownIcone.classList.add("rotate");
       dropdownItems.forEach((item) => item.setAttribute("tabindex", "0"));
       dropDownBtn.setAttribute("aria-expanded", "true");
       dropDownBtn.setAttribute("tabindex", "0");
@@ -134,6 +139,7 @@ class App {
 
     function closePopup() {
       activeDropdown.classList.remove("active");
+      dropdownIcone.classList.remove("rotate");
       dropdownItems.forEach((item) => item.setAttribute("tabindex", "-1"));
       dropDownBtn.setAttribute("aria-expanded", "false");
       dropDownBtn.setAttribute("tabindex", "0");
@@ -147,21 +153,21 @@ class App {
     });
     popular.addEventListener("click", (e) => {
       popular.style.display = "none";
-      btnText.textContent = "Popularité";
+      dropDownBtn.textContent = "Popularité";
       this.choice = "popular";
       closePopup();
       app.displayData();
     });
     title.addEventListener("click", (e) => {
       popular.style.display = "flex";
-      btnText.textContent = "Title";
+      dropDownBtn.textContent = "Title";
       this.choice = "title";
       closePopup();
       app.displayData();
     });
     date.addEventListener("click", (e) => {
       popular.style.display = "flex";
-      btnText.textContent = "Date";
+      dropDownBtn.textContent = "Date";
       this.choice = "date";
       closePopup();
       app.displayData();
@@ -169,9 +175,10 @@ class App {
   }
 }
 
+/*
 class LikeImplementing {
   constructor() {}
-}
+}*/
 
 class LightBox {
   constructor(data) {

@@ -55,35 +55,35 @@
 
     .dropdown_container {
       position: relative;
+      background-color: $primarydarkRed;
       z-index: 5;
 
       .dropdown_btn {
         @include centerleft;
+        position: relative;
+        z-index: 7;
         width: 170px;
         height: 51px;
-        background-color: $primarydarkRed;
         border-radius: 5px;
         padding-left: 20px;
+        font-weight: 700;
+        font-size: 18px;
+        color: $white;
         cursor: pointer;
+      }
+      .dropdown_icone {
+        position: absolute;
+        z-index: 6;
+        color: $white;
+        right: 15px;
+        top: 16px;
+        cursor: pointer;
+        transform: rotate(360deg);
+        transition: 0.6s ease-in-out;
+      }
 
-        .btn_text {
-          color: $white;
-        }
-
-        .dropdown_icone {
-          position: absolute;
-          z-index: 10;
-          color: $white;
-          right: 15px;
-          top: 16px;
-          cursor: pointer;
-          transform: rotate(180deg);
-          transition: 0.6s ease-in-out;
-
-          .rotate {
-            transform: rotate(0);
-          }
-        }
+      .rotate {
+        transform: rotate(180deg);
       }
       .dropdown_wrapper {
         position: absolute;
@@ -149,38 +149,42 @@
       .information_wrapper {
         display: flex;
         justify-content: space-between;
+        position: relative;
 
         .img_title {
           color: $primarydarkRed;
         }
         .like_wrapper {
-          @include center;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
           gap: 5px;
-          transition: 0.4s ease-in;
+          width: 100px;
           cursor: pointer;
 
-          .like_number {
+          i {
+            font-size: 16px;
+            color: $primarydarkRed;
             transition: 0.4s ease-in;
           }
-
-          .cliked {
-            color: $primarydarkRed;
-            font-size: 24px;
-          }
-
-          i {
-            color: $primarydarkRed;
-          }
         }
+        .text_button {
+          position: absolute;
+          font-size: 16px;
+          top: 4px;
+          right: 23px;
+          transition: 0.4s ease-in;
+        }
+        .like_wrapper.toggle_active {
+          i {
+            transform: scale(1.15);
+          }
 
-        .toggle_active {
-          .like_number {
+          + .text_button {
             font-size: 18px;
             font-weight: 700;
+            top: 3px;
             color: $primarydarkRed;
-          }
-          i {
-            scale: 1.1;
           }
         }
       }
