@@ -16,14 +16,20 @@ class PortfolioPictureCards {
       const img = document.createElement("img");
       img.setAttribute("src", this.portfolio.image);
       img.setAttribute("class", "pictures");
-      img.setAttribute("alt", `${this.portfolio.title} portfolio image`);
+      img.setAttribute(
+        "alt",
+        `${this.portfolio.title} from ${this.portfolio.name}`
+      );
       article.appendChild(container);
       container.appendChild(img);
     } else {
       const video = document.createElement("video");
       video.setAttribute("src", this.portfolio.video);
       video.setAttribute("class", "videos");
-      video.setAttribute("alt", `${this.portfolio.title} portefolio image`);
+      video.setAttribute(
+        "alt",
+        `${this.portfolio.title} from ${this.portfolio.name}`
+      );
       article.appendChild(container);
       container.appendChild(video);
     }

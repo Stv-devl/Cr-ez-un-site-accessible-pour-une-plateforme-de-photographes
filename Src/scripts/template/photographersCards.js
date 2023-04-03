@@ -8,7 +8,7 @@ class photographersCard {
     const a = document.createElement("a");
     a.setAttribute("href", `photographer.html`);
     a.setAttribute("class", "photographer_btn");
-    a.setAttribute("aria-label", this.profils.name);
+    a.setAttribute("aria-label", ` ${this.profils.name} profil page`);
     article.setAttribute("id", this.profils.id);
     const img = document.createElement("img");
     img.setAttribute("src", this.profils.portrait);

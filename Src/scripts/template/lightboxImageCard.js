@@ -26,7 +26,7 @@ class LightBoxImageCard {
       video.appendChild(source);
       imageWrapper.appendChild(video);
     }
-    const title = document.createElement("p");
+    const title = document.createElement("h3");
     title.setAttribute("class", "lightbox_title");
     title.textContent = this.lightboxImage.title;
     imageWrapper.appendChild(title);

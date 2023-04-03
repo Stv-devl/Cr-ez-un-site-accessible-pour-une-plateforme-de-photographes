@@ -55,8 +55,8 @@
     <div class="modal">
       <header class="modal_header">
         <div class="title_wrapper">
-          <p class="modale_title">Contactez-moi</p>
-          <p class="photographer_name">Photographe<p>
+          <h4 class="modale_title">Contactez-moi</h4>
+          <h4 class="photographer_name">Photographe<h4>
         </div>
         <a href="#" class="close_icone" id="closeModal"><img src="./Src/assets/icons/close.svg" alt="Close contact form"
             tabindex="0"></a>
@@ -65,26 +65,28 @@
         <form method="post">
           <div class="form_container">
             <div class="firstname_container">
-              <label class="form_text" aria-label="firstname label">Prénom</label>
-              <input class="input" type="text" autocomplete="off" id="firstname" aria-label="firstname input">
+              <label class="form_text" aria-label="firstname label" for="firstname">Prénom</label>
+              <input class="input" type="text" autocomplete="off" id="firstname" name="firstname"
+                aria-label="firstname input">
               <span id="firstnameError"></span>
             </div>
 
             <div class="lastname_container">
-              <label class="form_text" aria-label="lastname label">Nom</label>
-              <input class="input" type="text" autocomplete="off" id="lastname" aria-label="lastname input"
-                tabindex="0">
+              <label class="form_text" aria-label="lastname label" for="lastname">Nom</label>
+              <input class="input" type="text" autocomplete="off" id="lastname" name="lastname"
+                aria-label="lastname input" tabindex="0">
               <span id="lastnameError"></span>
             </div>
 
             <div class="email_container">
-              <label class="form_text" aria-label="email label">Email</label>
-              <input class="input" type="text" autocomplete="off" id="email" aria-label="email input" tabindex="0">
+              <label class="form_text" aria-label="email label" for="email">Email</label>
+              <input class="input" type="text" autocomplete="off" id="email" name="email" aria-label="email input"
+                tabindex="0">
               <span id="emailError"></span>
             </div>
 
             <div class="Textarea_container">
-              <label class="form_text" aria-label="your text label">Votre message</label>
+              <label class="form_text" aria-label="your text label" for="textarea">Votre message</label>
               <textarea class="input" name="textarea" id="textArea" aria-label="your text textarea"
                 tabindex="0"></textarea>
               <span id="textAreaError"></span>
