@@ -58,7 +58,8 @@
           <p class="modale_title">Contactez-moi</p>
           <p class="photographer_name">Photographe<p>
         </div>
-        <img class="close_icone" id="closeModal" src="./Src/assets/icons/close.svg" alt="Close contact form">
+        <a href="#" class="close_icone" id="closeModal"><img src="./Src/assets/icons/close.svg" alt="Close contact form"
+            tabindex="0"></a>
       </header>
       <form>
         <form method="post">
@@ -71,19 +72,21 @@
 
             <div class="lastname_container">
               <label class="form_text" aria-label="lastname label">Nom</label>
-              <input class="input" type="text" autocomplete="off" id="lastname" aria-label="lastname input">
+              <input class="input" type="text" autocomplete="off" id="lastname" aria-label="lastname input"
+                tabindex="0">
               <span id="lastnameError"></span>
             </div>
 
             <div class="email_container">
               <label class="form_text" aria-label="email label">Email</label>
-              <input class="input" type="text" autocomplete="off" id="email" aria-label="email input">
+              <input class="input" type="text" autocomplete="off" id="email" aria-label="email input" tabindex="0">
               <span id="emailError"></span>
             </div>
 
             <div class="Textarea_container">
               <label class="form_text" aria-label="your text label">Votre message</label>
-              <textarea class="input" name="textarea" id="textArea" aria-label="your text textarea"></textarea>
+              <textarea class="input" name="textarea" id="textArea" aria-label="your text textarea"
+                tabindex="0"></textarea>
               <span id="textAreaError"></span>
             </div>
           </div>

@@ -81,13 +81,19 @@ body {
   margin: 0 auto;
 }
 
+input:focus-visible,
+textarea:focus-visible {
+  padding: 5px;
+  outline: 3px dashed rgb(86, 86, 86);
+}
+
 button {
   border: none;
   background: none;
 }
 button:focus-visible {
   padding: 5px;
-  outline: 3px dashed black;
+  outline: 3px dashed rgb(86, 86, 86);
 }
 
 .contact_button,
@@ -114,7 +120,7 @@ a:visited {
 a:focus-visible,
 a:visited:focus-visible {
   padding: 5px;
-  outline: 3px dashed black;
+  outline: 3px dashed rgb(86, 86, 86);
 }
 
 img {
