@@ -247,9 +247,7 @@ class LightBox {
   //when we move on left or right or close we will delete the image wrapper
   deleteImageWrapper() {
     const imageWrapper = document.getElementById("imageWrapper");
-    if (imageWrapper) {
-      imageWrapper.remove();
-    }
+    imageWrapper ? imageWrapper.remove() : null;
   }
   //slide on righ
   slideRight() {
@@ -271,13 +269,16 @@ class LightBox {
   }
   //display the light box in the dom
   displayLightbox() {
+    const imageWrapper = document.getElementById("imageWrapper");
     //get data of picture who is selected in lightbox with the getArrayNumber
     const getDataCard = [this.data[this.getIndexNumber]];
-    //send datas to factory, launch the dom
-    getDataCard.forEach((data) => {
-      const lightBoxCard = new LightBoxImageCard(data);
-      this.lightBoxWrapper.appendChild(lightBoxCard.lightBoxImageCardDom());
-    });
+    //create lightBoxCard methode and launch the dom, only if imageWrapper doesn't exist (if not all the time a user press Entrer we will get a new imageWrapper)
+    if (!imageWrapper) {
+      getDataCard.forEach((data) => {
+        const lightBoxCard = new LightBoxImageCard(data);
+        this.lightBoxWrapper.appendChild(lightBoxCard.lightBoxImageCardDom());
+      });
+    }
   }
   openLightbox() {
     lightBox.style.display = "flex";
