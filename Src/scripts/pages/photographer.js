@@ -115,8 +115,8 @@ class App {
 
     function launchCounting() {
       let total = [];
-      likeWrapper.forEach((e) => {
-        total.push(parseInt(e.textContent));
+      likeWrapper.forEach((likewrapper) => {
+        total.push(parseInt(likewrapper.parentElement.children[2].textContent));
       });
       let displayToFooter = total.reduce((a, b) => a + b, 0);
       footerLikeNumber.textContent = displayToFooter;
@@ -128,6 +128,11 @@ class App {
   dropdown() {
     const dropdownItems = document.querySelectorAll(".dropdown_text");
     const dropdownIcone = document.querySelector(".dropdown_icone");
+    const activeDropdown = document.getElementById("activeDropdown");
+    const dropDownBtn = document.getElementById("dropDownBtn");
+    const popular = document.getElementById("popular");
+    const title = document.getElementById("title");
+    const date = document.getElementById("date");
 
     function openPopup() {
       activeDropdown.classList.add("active");
@@ -145,27 +150,27 @@ class App {
       dropDownBtn.setAttribute("tabindex", "0");
     }
 
-    dropDownBtn.addEventListener("click", (e) => {
+    dropDownBtn.addEventListener("click", () => {
       if (activeDropdown.classList.contains("active")) return closePopup();
       else {
         return openPopup();
       }
     });
-    popular.addEventListener("click", (e) => {
+    popular.addEventListener("click", () => {
       popular.style.display = "none";
       dropDownBtn.textContent = "Popularité";
       this.choice = "popular";
       closePopup();
       app.displayData();
     });
-    title.addEventListener("click", (e) => {
+    title.addEventListener("click", () => {
       popular.style.display = "flex";
       dropDownBtn.textContent = "Title";
       this.choice = "title";
       closePopup();
       app.displayData();
     });
-    date.addEventListener("click", (e) => {
+    date.addEventListener("click", () => {
       popular.style.display = "flex";
       dropDownBtn.textContent = "Date";
       this.choice = "date";
@@ -184,6 +189,10 @@ class LightBox {
   constructor(data) {
     this.imageContainer = document.querySelectorAll(".image_container");
     this.lightBoxWrapper = document.querySelector(".lightbox_wrapper");
+    this.closing = document.getElementById("closing");
+    this.nextBtn = document.getElementById("nextBtn");
+    this.previousBtn = document.getElementById("previousBtn");
+    this.lightboxContainer = document.getElementById("lightboxContainer");
     this.data = data;
     this.getIndexNumber = 0;
     this.pictureSrc = "";
@@ -196,7 +205,7 @@ class LightBox {
   lightbox() {
     //When we click on 1 picture of portfolio
     this.imageContainer.forEach((article) => {
-      article.addEventListener("click", (e) => {
+      article.addEventListener("click", () => {
         //get the url of clicked picture
         this.pictureSrc = article.children[0].getAttribute("src").split("/")[4];
         //get Array number will implement a number for each picture, here we find the array index of the picture who is clicked
@@ -212,17 +221,17 @@ class LightBox {
 
   slideLightbox() {
     //event at click on cross, remove image_wrapper when we close the lightbox
-    closing.addEventListener("click", (e) => {
+    this.closing.addEventListener("click", () => {
       this.deleteImageWrapper();
       this.closeLightbox();
     });
     //next event, at click on next, remove image_wrapper, change number of getArrayNumber
-    nextBtn.addEventListener("click", (e) => {
+    this.nextBtn.addEventListener("click", () => {
       this.deleteImageWrapper();
       this.slideRight();
     });
     //previous event, at click on next, remove image_wrapper, change number of getArrayNumber
-    previousBtn.addEventListener("click", (e) => {
+    this.previousBtn.addEventListener("click", () => {
       this.deleteImageWrapper();
       this.slideLeft();
     });
@@ -288,10 +297,10 @@ class LightBox {
     }
   }
   openLightbox() {
-    lightBox.style.display = "flex";
+    this.lightboxContainer.style.display = "flex";
   }
   closeLightbox() {
-    lightBox.style.display = "none";
+    this.lightboxContainer.style.display = "none";
   }
 }
 

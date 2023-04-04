@@ -1,4 +1,3 @@
-//model
 import MediasImage from "../models/mediaImageModel.js";
 import MediasVideo from "../models/mediaVideoModel.js";
 

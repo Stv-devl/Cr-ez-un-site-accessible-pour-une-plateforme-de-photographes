@@ -145,8 +145,8 @@ class ContactForm {
   }
   //launching function for open and close modal on click, launch the photographername class
   launch() {
-    this.openmodal.addEventListener("click", (e) => this.displayModal());
-    this.closemodal.addEventListener("click", (e) => this.closeModal());
+    this.openmodal.addEventListener("click", () => this.displayModal());
+    this.closemodal.addEventListener("click", () => this.closeModal());
     const photographername = new PhotographerName();
     photographername.displayPhotographerName();
   }

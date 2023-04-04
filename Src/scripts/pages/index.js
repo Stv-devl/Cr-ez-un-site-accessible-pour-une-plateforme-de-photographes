@@ -34,7 +34,7 @@ class App {
 function getPhotographerId() {
   const photographerBtn = document.querySelectorAll(".photographer_btn");
   photographerBtn.forEach((element) => {
-    element.addEventListener("click", (e) => {
+    element.addEventListener("click", () => {
       let elementId = element.parentElement.id;
       saveToLocalstorage(elementId);
     });
