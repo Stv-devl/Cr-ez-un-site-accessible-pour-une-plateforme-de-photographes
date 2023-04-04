@@ -96,22 +96,22 @@ class ContactForm {
         switch (e.target.id) {
           case "firstname":
             this.inputValue = e.target.value;
-            this.inputId = "firstname";
+            this.inputId = e.target.id;
             this.namesChecker();
             break;
           case "lastname":
             this.inputValue = e.target.value;
-            this.inputId = "lastname";
+            this.inputId = e.target.id;
             this.namesChecker();
             break;
           case "email":
             this.inputValue = e.target.value;
-            this.inputId = "email";
+            this.inputId = e.target.id;
             this.emailChecker();
             break;
           case "textArea":
             this.inputValue = e.target.value;
-            this.inputId = "textArea";
+            this.inputId = e.target.id;
             this.textAreaChecker();
             break;
           default:
@@ -144,7 +144,7 @@ class ContactForm {
     });
   }
   //launching function for open and close modal on click, launch the photographername class
-  launch() {
+  launchForm() {
     this.openmodal.addEventListener("click", () => this.displayModal());
     this.closemodal.addEventListener("click", () => this.closeModal());
     const photographername = new PhotographerName();

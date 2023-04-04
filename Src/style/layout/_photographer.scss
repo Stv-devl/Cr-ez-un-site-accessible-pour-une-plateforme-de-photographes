@@ -150,6 +150,7 @@
         display: flex;
         justify-content: space-between;
         position: relative;
+        text-align: left;
 
         .img_title {
           color: $primarydarkRed;
@@ -157,12 +158,12 @@
         .like_wrapper {
           display: flex;
           justify-content: flex-end;
-          align-items: center;
           gap: 5px;
           width: 100px;
           cursor: pointer;
 
           i {
+            padding-top: 7px;
             font-size: 16px;
             color: $primarydarkRed;
             transition: 0.4s ease-in;

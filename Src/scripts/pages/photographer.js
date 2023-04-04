@@ -1,18 +1,12 @@
+/************import Js pages************/
 //api
 import photographersApi from "../api/api.js";
 //factory
 import MediasFactory from "../factories/mediaFactory.js";
 //model
-/*
-import MediasImage from "../models/mediaImageModel.js";
-import MediasVideo from "../models/mediaVideoModel.js";
-import Photographers from "../models/photographersModel.js";*/
 import ProfilModel from "../models/profilModel.js";
 //template
 import LightBoxImageCard from "../template/lightboxImageCard.js";
-/*
-import MediaTextCard from "../template/MediaTextCards.js";
-import photographersCard from "../template/photographersCards.js";*/
 import PortfolioPictureCards from "../template/portfolioPictureCards.js";
 import ProfilCard from "../template/ProfilCard.js";
 //template
@@ -24,10 +18,9 @@ class App {
     this.mediaSection = document.querySelector(".medias_articles");
     this.photographHeader = document.querySelector(".photograph-header");
     this.photographFooter = document.querySelector(".footer");
-    this.choice = "popular";
   }
 
-  async displayData() {
+  async displayData(userFilterChoice) {
     const gettAllData = await this.dataApi.get();
     const mediasData = gettAllData.media;
     const photographersData = gettAllData.photographers;
@@ -49,8 +42,8 @@ class App {
       (getId) => getId.photographerId == recupId
     );
 
-    //filter popularity, date and title
-    switch (this.choice) {
+    //filter by popularity, date and title
+    switch (userFilterChoice) {
       case "title":
         mediasDataFilter.sort((a, b) => (a.title > b.title ? 1 : -1));
         break;
@@ -85,18 +78,87 @@ class App {
         );
       });
 
+    this.launchingClass(mediasDataFilter);
+  }
+  launchingClass(mediasDataFilter) {
+    //launch lightbox, contactForm, likeimage
     const lightBox = new LightBox(mediasDataFilter);
     const contactform = new ContactForm();
+    const likeimplementing = new LikeImplementing();
     lightBox.lightbox();
-    this.likeImage();
-    contactform.launch();
+    likeimplementing.likeImage();
+    likeimplementing.launchCounting();
+    contactform.launchForm();
+  }
+}
+
+class DropDownButton {
+  constructor() {
+    this.dropdownItems = document.querySelectorAll(".dropdown_text");
+    this.dropdownIcone = document.querySelector(".dropdown_icone");
+    this.activeDropdown = document.getElementById("activeDropdown");
+    this.dropDownBtn = document.getElementById("dropDownBtn");
+    this.popular = document.getElementById("popular");
+    this.title = document.getElementById("title");
+    this.date = document.getElementById("date");
+    this.userFilterChoice;
   }
 
-  likeImage() {
-    const likeWrapper = document.querySelectorAll(".like_wrapper");
-    const footerLikeNumber = document.querySelector(".footer_like_number");
+  openPopup() {
+    this.activeDropdown.classList.add("active");
+    this.dropdownIcone.classList.add("rotate");
+    this.dropdownItems.forEach((item) => item.setAttribute("tabindex", "0"));
+    this.dropDownBtn.setAttribute("aria-expanded", "true");
+    this.dropDownBtn.setAttribute("tabindex", "0");
+  }
 
-    likeWrapper.forEach((likeWrapper) => {
+  closePopup() {
+    this.activeDropdown.classList.remove("active");
+    this.dropdownIcone.classList.remove("rotate");
+    this.dropdownItems.forEach((item) => item.setAttribute("tabindex", "-1"));
+    this.dropDownBtn.setAttribute("aria-expanded", "false");
+    this.dropDownBtn.setAttribute("tabindex", "0");
+  }
+
+  dropdown() {
+    this.dropDownBtn.addEventListener("click", () => {
+      if (this.activeDropdown.classList.contains("active"))
+        return this.closePopup();
+      else {
+        return this.openPopup();
+      }
+    });
+    this.popular.addEventListener("click", () => {
+      this.popular.style.display = "none";
+      this.dropDownBtn.textContent = "Popularité";
+      this.userFilterChoice = "popular";
+      this.closePopup();
+      app.displayData(this.userFilterChoice);
+    });
+    this.title.addEventListener("click", () => {
+      this.popular.style.display = "flex";
+      this.dropDownBtn.textContent = "Title";
+      this.userFilterChoice = "title";
+      this.closePopup();
+      app.displayData(this.userFilterChoice);
+    });
+    this.date.addEventListener("click", () => {
+      this.popular.style.display = "flex";
+      this.dropDownBtn.textContent = "Date";
+      this.userFilterChoice = "date";
+      this.closePopup();
+      app.displayData(this.userFilterChoice);
+    });
+  }
+}
+
+class LikeImplementing {
+  constructor() {
+    this.likeWrapper = document.querySelectorAll(".like_wrapper");
+    this.footerLikeNumber = document.querySelector(".footer_like_number");
+  }
+  likeImage() {
+    this.likeWrapper.forEach((likeWrapper) => {
       likeWrapper.addEventListener("click", (e) => {
         e.preventDefault();
         likeWrapper.classList.toggle("toggle_active");
@@ -105,85 +167,23 @@ class App {
         let likenumber = parseInt(like.textContent); //parsint for make the text be number
         if (likeWrapper.classList.contains("toggle_active")) {
           like.textContent = likenumber + 1;
-          launchCounting();
+          this.launchCounting();
         } else {
           like.textContent = likenumber - 1;
-          launchCounting();
+          this.launchCounting();
         }
       });
     });
-
-    function launchCounting() {
-      let total = [];
-      likeWrapper.forEach((likewrapper) => {
-        total.push(parseInt(likewrapper.parentElement.children[2].textContent));
-      });
-      let displayToFooter = total.reduce((a, b) => a + b, 0);
-      footerLikeNumber.textContent = displayToFooter;
-    }
-    launchCounting();
   }
-
-  //dropdown function
-  dropdown() {
-    const dropdownItems = document.querySelectorAll(".dropdown_text");
-    const dropdownIcone = document.querySelector(".dropdown_icone");
-    const activeDropdown = document.getElementById("activeDropdown");
-    const dropDownBtn = document.getElementById("dropDownBtn");
-    const popular = document.getElementById("popular");
-    const title = document.getElementById("title");
-    const date = document.getElementById("date");
-
-    function openPopup() {
-      activeDropdown.classList.add("active");
-      dropdownIcone.classList.add("rotate");
-      dropdownItems.forEach((item) => item.setAttribute("tabindex", "0"));
-      dropDownBtn.setAttribute("aria-expanded", "true");
-      dropDownBtn.setAttribute("tabindex", "0");
-    }
-
-    function closePopup() {
-      activeDropdown.classList.remove("active");
-      dropdownIcone.classList.remove("rotate");
-      dropdownItems.forEach((item) => item.setAttribute("tabindex", "-1"));
-      dropDownBtn.setAttribute("aria-expanded", "false");
-      dropDownBtn.setAttribute("tabindex", "0");
-    }
-
-    dropDownBtn.addEventListener("click", () => {
-      if (activeDropdown.classList.contains("active")) return closePopup();
-      else {
-        return openPopup();
-      }
+  launchCounting() {
+    let total = [];
+    this.likeWrapper.forEach((likewrapper) => {
+      total.push(parseInt(likewrapper.parentElement.children[2].textContent));
     });
-    popular.addEventListener("click", () => {
-      popular.style.display = "none";
-      dropDownBtn.textContent = "Popularité";
-      this.choice = "popular";
-      closePopup();
-      app.displayData();
-    });
-    title.addEventListener("click", () => {
-      popular.style.display = "flex";
-      dropDownBtn.textContent = "Title";
-      this.choice = "title";
-      closePopup();
-      app.displayData();
-    });
-    date.addEventListener("click", () => {
-      popular.style.display = "flex";
-      dropDownBtn.textContent = "Date";
-      this.choice = "date";
-      closePopup();
-      app.displayData();
-    });
+    let displayToFooter = total.reduce((a, b) => a + b, 0);
+    this.footerLikeNumber.textContent = displayToFooter;
   }
 }
-
-/*
-class LikeImplementing {
-  constructor() {}
-}*/
 
 class LightBox {
   constructor(data) {
@@ -305,10 +305,11 @@ class LightBox {
 }
 
 const app = new App();
+const dropdownbutton = new DropDownButton();
 
 function init() {
   app.displayData();
-  app.dropdown();
+  dropdownbutton.dropdown();
 }
 
 init();

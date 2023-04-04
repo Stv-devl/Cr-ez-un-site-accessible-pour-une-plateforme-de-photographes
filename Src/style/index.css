@@ -331,6 +331,7 @@ $breakup-desktop: 1060px;*/
   display: flex;
   justify-content: space-between;
   position: relative;
+  text-align: left;
 }
 .photographer_main .medias_articles .picture_card .information_wrapper .img_title {
   color: #901c1c;
@@ -338,12 +339,12 @@ $breakup-desktop: 1060px;*/
 .photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   gap: 5px;
   width: 100px;
   cursor: pointer;
 }
 .photographer_main .medias_articles .picture_card .information_wrapper .like_wrapper i {
+  padding-top: 7px;
   font-size: 16px;
   color: #901c1c;
   transition: 0.4s ease-in;
@@ -440,7 +441,7 @@ $breakup-desktop: 1060px;*/
   position: relative;
   z-index: 20;
   width: 50%;
-  margin: 120px auto 0 auto;
+  margin: 60px auto 0 auto;
   padding: 35px;
   text-align: left;
   background-color: #db8876;
