@@ -1,4 +1,4 @@
-class Photographers {
+class PhotographersModel {
   constructor(data) {
     this._city = data.city;
     this._country = data.country;
@@ -31,4 +31,4 @@ class Photographers {
   }
 }
 
-export default Photographers;
+export default PhotographersModel;

@@ -1,7 +1,7 @@
 //api
 import photographersApi from "../api/api.js";
 //model
-import Photographers from "../models/photographersModel.js";
+import PhotographersModel from "../models/photographersModel.js";
 //template
 import photographersCard from "../template/photographersCards.js";
 
@@ -13,18 +13,18 @@ class App {
     this.photographersSection = document.querySelector(".photographer_section");
   }
 
-  //
   async displayData() {
     //get data from Api
-    const gettAllData = await this.dataApi.get();
-    const photographersData = gettAllData.photographers;
+    const { photographers } = await this.dataApi.get();
 
     //send photophraphers datas to class photographers
-    photographersData
-      .map((photographer) => new Photographers(photographer))
+    photographers
+      .map((photographer) => new PhotographersModel(photographer))
       .forEach((photographer) => {
-        const Template = new photographersCard(photographer);
-        this.photographersSection.appendChild(Template.getUserCardDOM());
+        const photographerTemplate = new photographersCard(photographer);
+        this.photographersSection.appendChild(
+          photographerTemplate.getUserCardDOM()
+        );
       });
     getPhotographerId();
   }

@@ -1,7 +1,7 @@
-import Photographers from "../models/photographersModel.js";
+import PhotographersModel from "../models/photographersModel.js";
 
 //extends Photographers pattern to gets the data for photographers profil
-class ProfilModel extends Photographers {
+class ProfilModel extends PhotographersModel {
   constructor(data) {
     super(data);
     this.profils = data;

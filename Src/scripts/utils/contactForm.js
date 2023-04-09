@@ -1,28 +1,14 @@
-//import api
-import photographersApi from "../api/api.js";
-
 class PhotographerName {
   constructor() {
-    this.dataApi = new photographersApi("./Src/data/photographers.json");
     this.photographerName = document.querySelector(".photographer_name");
   }
-  async displayPhotographerName() {
-    const gettAllData = await this.dataApi.get();
-    const photographersData = gettAllData.photographers;
-    //get photographer Id from local storage,
-    const recupId = JSON.parse(localStorage.getItem("Saving Id"))[0];
-    //filter photographer profil with Id
-    const photographeProfilFilter = photographersData.filter(
-      (getId) => getId.id == recupId
-    );
+  displayPhotographerName(photographeProfilFilter) {
     //display photographer name on dom
     this.photographerName.textContent = photographeProfilFilter[0].name;
   }
 }
-
 class ContactForm {
   constructor() {
-    this.dataApi = new photographersApi("./Src/data/photographers.json");
     this.photographerName = document.querySelector(".photographer_name");
     this.openmodal = document.getElementById("openModal");
     this.closemodal = document.getElementById("closeModal");
@@ -120,7 +106,7 @@ class ContactForm {
       });
     });
   }
-  //If everything is complete send thanks lessage, if not alert message ask to fill the forms
+  //If everything is complete send thanks message, if not alert message ask to fill the forms
   submit() {
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -144,11 +130,11 @@ class ContactForm {
     });
   }
   //launching function for open and close modal on click, launch the photographername class
-  launchForm() {
+  launchForm(photographeProfilFilter) {
     this.openmodal.addEventListener("click", () => this.displayModal());
     this.closemodal.addEventListener("click", () => this.closeModal());
     const photographername = new PhotographerName();
-    photographername.displayPhotographerName();
+    photographername.displayPhotographerName(photographeProfilFilter);
   }
 }
 

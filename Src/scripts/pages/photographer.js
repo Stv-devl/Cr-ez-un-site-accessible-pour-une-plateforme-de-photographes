@@ -21,9 +21,9 @@ class App {
   }
 
   async displayData(userFilterChoice) {
-    const gettAllData = await this.dataApi.get();
-    const mediasData = gettAllData.media;
-    const photographersData = gettAllData.photographers;
+    //get data media and photographers
+    const { media } = await this.dataApi.get();
+    const { photographers } = await this.dataApi.get();
 
     //delete all display from page when change the filter (popular, date, title)
     this.mediaSection.innerHTML = "";
@@ -34,11 +34,11 @@ class App {
     const recupId = JSON.parse(localStorage.getItem("Saving Id"))[0];
 
     //filter photographer profil with Id
-    const photographeProfilFilter = photographersData.filter(
+    const photographeProfilFilter = photographers.filter(
       (getId) => getId.id == recupId
     );
     //filter mediasData for get images corresponding to photographerId
-    const mediasDataFilter = mediasData.filter(
+    const mediasDataFilter = media.filter(
       (getId) => getId.photographerId == recupId
     );
 
@@ -78,9 +78,9 @@ class App {
         );
       });
 
-    this.launchingClass(mediasDataFilter);
+    this.launchingClass(mediasDataFilter, photographeProfilFilter);
   }
-  launchingClass(mediasDataFilter) {
+  launchingClass(mediasDataFilter, photographeProfilFilter) {
     //launch lightbox, contactForm, likeimage
     const lightBox = new LightBox(mediasDataFilter);
     const contactform = new ContactForm();
@@ -88,7 +88,7 @@ class App {
     lightBox.lightbox();
     likeimplementing.likeImage();
     likeimplementing.launchCounting();
-    contactform.launchForm();
+    contactform.launchForm(photographeProfilFilter);
   }
 }
 
