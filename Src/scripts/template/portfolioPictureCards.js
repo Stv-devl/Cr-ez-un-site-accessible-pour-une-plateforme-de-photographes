@@ -30,14 +30,13 @@ class PortfolioPictureCards {
     /****like_wrapper****/
     const likewrapper = document.createElement("button");
     likewrapper.setAttribute("class", "like_wrapper");
+    likewrapper.setAttribute("aria-label", "like this picture");
     const i = document.createElement("i");
     i.setAttribute("class", "fa-solid fa-heart");
-    i.setAttribute("aria-label", "likes");
     /****span for text in button****/
     const textbutton = document.createElement("span");
     textbutton.setAttribute("class", "text_button");
     textbutton.textContent = this.portfolio.like;
-
     informationwrapper.appendChild(titles);
     informationwrapper.appendChild(likewrapper);
     informationwrapper.appendChild(textbutton);
