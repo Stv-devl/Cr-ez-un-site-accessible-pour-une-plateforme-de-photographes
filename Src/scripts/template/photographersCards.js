@@ -15,6 +15,10 @@ class photographersCard {
     img.setAttribute("alt", this.profils.name);
     const h2 = document.createElement("h2");
     h2.textContent = this.profils.name;
+    //text wrapper
+    const photoTextWrapper = document.createElement("div");
+    photoTextWrapper.setAttribute("class", "photo_text_wrapper");
+    photoTextWrapper.setAttribute("tabindex", "0");
     const h3 = document.createElement("h3");
     h3.textContent = `${this.profils.city}, ${this.profils.country}`;
     const pTagline = document.createElement("p");
@@ -23,12 +27,14 @@ class photographersCard {
     const p = document.createElement("p");
     p.setAttribute("class", "salary");
     p.textContent = `${this.profils.price}$/jour`;
+    //appendChilds
     article.appendChild(a);
     a.appendChild(img);
     a.appendChild(h2);
-    article.appendChild(h3);
-    article.appendChild(pTagline);
-    article.appendChild(p);
+    article.appendChild(photoTextWrapper);
+    photoTextWrapper.appendChild(h3);
+    photoTextWrapper.appendChild(pTagline);
+    photoTextWrapper.appendChild(p);
 
     return article;
   }

@@ -42,13 +42,17 @@ class App {
       (getId) => getId.photographerId == recupId
     );
 
+    /* console.log(photographeProfilFilter);
+    console.log(mediasDataFilter);*/
+
     //filter by popularity, date and title
     switch (userFilterChoice) {
       case "title":
         mediasDataFilter.sort((a, b) => (a.title > b.title ? 1 : -1));
         break;
       case "date":
-        mediasDataFilter.sort((a, b) => (a.date > b.date ? 1 : -1));
+        mediasDataFilter.sort((a, b) => (a.date < b.date ? 1 : -1));
+
         break;
       default:
         mediasDataFilter.sort((a, b) => b.likes - a.likes);
@@ -58,6 +62,8 @@ class App {
     const sendMediaDatas = mediasDataFilter.map(
       (media) => new MediasFactory(media)
     );
+
+    console.log(sendMediaDatas);
 
     // Display the media objects
     sendMediaDatas.forEach((image) => {
@@ -197,21 +203,28 @@ class LightBox {
     this.getIndexNumber = 0;
     this.pictureSrc = "";
     //filter data for get all url
+    console.log(data);
     this.getAllUrl = data.map((data) => {
       return data.image || data.video;
     });
   }
 
   lightbox() {
+    console.log(this.getAllUrl);
     //When we click on 1 picture of portfolio
     this.imageContainer.forEach((article) => {
       article.addEventListener("click", () => {
         //get the url of clicked picture
+        console.log(article.children[0]);
         this.pictureSrc = article.children[0].getAttribute("src").split("/")[4];
+
+        console.log(this.pictureSrc);
         //get Array number will implement a number for each picture, here we find the array index of the picture who is clicked
         this.getIndexNumber = this.getAllUrl.findIndex(
           (e) => e === this.pictureSrc
         );
+        console.log(this.getIndexNumber);
+
         this.openLightbox();
         this.displayLightbox();
         this.slideLightbox();
@@ -251,14 +264,6 @@ class LightBox {
         this.slideRight();
       }
     });
-    //keyboard event Delete and escape
-    window.addEventListener("keydown", (event) => {
-      const keyboardNumber = event.key;
-      if (keyboardNumber == "Escape" || keyboardNumber == "Delete") {
-        this.deleteImageWrapper();
-        this.closeLightbox();
-      }
-    });
   }
   //when we move on left or right or close we will delete the image wrapper
   deleteImageWrapper() {
@@ -288,6 +293,8 @@ class LightBox {
     const imageWrapper = document.getElementById("imageWrapper");
     //get data of picture who is selected in lightbox with the getArrayNumber
     const getDataCard = [this.data[this.getIndexNumber]];
+
+    console.log(getDataCard);
     //create lightBoxCard methode and launch the dom, only if imageWrapper doesn't exist (if not all the time a user press Entrer we will get a new imageWrapper)
     if (!imageWrapper) {
       getDataCard.forEach((data) => {
@@ -298,9 +305,12 @@ class LightBox {
   }
   openLightbox() {
     this.lightboxContainer.style.display = "flex";
+    this.lightboxContainer.setAttribute("tabindex", "0");
+    this.lightboxContainer.focus();
   }
   closeLightbox() {
     this.lightboxContainer.style.display = "none";
+    this.lightboxContainer.setAttribute("tabindex", "-1");
   }
 }
 

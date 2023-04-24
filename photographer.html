@@ -23,7 +23,7 @@
     <section class=" photograph-header"></section>
 
     <section class="filter">
-      <p class="filter_title">Trier par</p>
+      <p class="filter_title" tabindex="0">Trier par</p>
       <div class="dropdown_container">
 
         <button class="dropdown_btn" id="dropDownBtn" aria-haspopup="listbox" aria-expanded="false"
@@ -50,64 +50,64 @@
   <footer class="footer">
   </footer>
   <!-- modale -->
-  <div id="contact_modal">
+  <div id="contactModal" tabindex="-1">
     <div class="modal">
       <header class="modal_header">
         <div class="title_wrapper">
-          <h4 class="modale_title">Contactez-moi</h4>
-          <h5 class="photographer_name">Photographe</h5>
+          <h4 class="modale_title" tabindex="0">Contactez-moi</h4>
+          <h5 class="photographer_name" tabindex="0">Photographe</h5>
         </div>
-        <a href="#" class="close_icone" id="closeModal"><img src="./Src/assets/icons/close.svg"
+        <a href="#" class="close_icone" id="closeModal" tabindex="0"><img src="./Src/assets/icons/close.svg"
             alt="Close contact form"></a>
       </header>
       <form>
         <form method="post">
           <div class="form_container">
             <div class="firstname_container">
-              <label class="form_text" aria-label="firstname label" for="firstname">Prénom</label>
+              <label class="form_text" aria-label="firstname label" for="firstname" tabindex="0">Prénom</label>
               <input class="input" type="text" autocomplete="off" id="firstname" name="firstname"
-                aria-label="firstname input">
+                aria-label="firstname input" tabindex="0">
               <span id="firstnameError"></span>
             </div>
 
             <div class="lastname_container">
-              <label class="form_text" aria-label="lastname label" for="lastname">Nom</label>
+              <label class="form_text" aria-label="lastname label" for="lastname" tabindex="0">Nom</label>
               <input class="input" type="text" autocomplete="off" id="lastname" name="lastname"
                 aria-label="lastname input" tabindex="0">
               <span id="lastnameError"></span>
             </div>
 
             <div class="email_container">
-              <label class="form_text" aria-label="email label" for="email">Email</label>
+              <label class="form_text" aria-label="email label" for="email" tabindex="0">Email</label>
               <input class="input" type="text" autocomplete="off" id="email" name="email" aria-label="email input"
                 tabindex="0">
               <span id="emailError"></span>
             </div>
 
             <div class="Textarea_container">
-              <label class="form_text" aria-label="your text label" for="textArea">Votre message</label>
+              <label class="form_text" aria-label="your text label" for="textArea" tabindex="0">Votre message</label>
               <textarea class="input" id="textArea" name="textarea" aria-label="your text textarea"
                 tabindex="0"></textarea>
               <span id="textAreaError"></span>
             </div>
           </div>
-          <button class="contact_btn" aria-label="send form button">Envoyer</button>
+          <button class="contact_btn" aria-label="send form button" tabindex="0">Envoyer</button>
         </form>
     </div>
   </div>
   <!-- lightbox -->
-  <div class="lightbox_container" id="lightboxContainer" aria-label="image closeup view">
+  <div class="lightbox_container" id="lightboxContainer" aria-label="image closeup view" tabindex="-1">
     <div class="lightbox_wrapper">
-      <div class="closing_cross" id="closing" aria-label="Close dialog">
+      <a href="#" class="closing_cross" id="closing" aria-label="Close dialog">
         <i class="fa-solid fa-xmark fa-2xl darkredicone" aria-hidden="true"></i>
-      </div>
+      </a>
       <div class="image_switch">
-        <div class="previous" id="previousBtn" aria-label="Previous image">
+        <a href="#" class="previous" id="previousBtn" aria-label="Previous image">
           <i class="fa-solid fa-chevron-left fa-2xl darkredicone" aria-hidden="true"></i>
-        </div>
-        <div class="next" id="nextBtn" aria-label="Next image">
+        </a>
+        <a href="#" class="next" id="nextBtn" aria-label="Next image">
           <i class="fa-solid fa-chevron-right fa-2xl darkredicone" aria-hidden="true"></i>
-        </div>
+        </a>
       </div>
     </div>
   </div>

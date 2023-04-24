@@ -20,6 +20,18 @@ body {
 }
 
 input,
+h1,
+.photo_text_wrapper,
+.profil_name,
+.profil_text_wrapper,
+.profil_image,
+.filter_title,
+.img_title,
+.footer_like_number,
+.modale_title,
+.photographer_name,
+.close_icone,
+label,
 textarea {
   @include focus;
 }

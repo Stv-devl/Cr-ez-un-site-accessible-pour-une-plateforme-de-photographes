@@ -7,6 +7,7 @@ class PhotographersModel {
     this._portrait = data.portrait;
     this._tagline = data.tagline;
     this._price = data.price;
+    console.log(data);
   }
   get city() {
     return this._city;

@@ -77,6 +77,18 @@ body {
 }
 
 input:focus-visible,
+h1:focus-visible,
+.photo_text_wrapper:focus-visible,
+.profil_name:focus-visible,
+.profil_text_wrapper:focus-visible,
+.profil_image:focus-visible,
+.filter_title:focus-visible,
+.img_title:focus-visible,
+.footer_like_number:focus-visible,
+.modale_title:focus-visible,
+.photographer_name:focus-visible,
+.close_icone:focus-visible,
+label:focus-visible,
 textarea:focus-visible {
   padding: 5px;
   outline: 3px dashed rgb(86, 86, 86);
@@ -140,11 +152,11 @@ $breakup-desktop: 1060px;*/
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  cursor: pointer;
 }
 .page_header .logo {
   height: 50px;
   margin-left: 100px;
+  cursor: pointer;
 }
 .page_header h1 {
   color: #901c1c;
@@ -425,7 +437,7 @@ $breakup-desktop: 1060px;*/
 /**********************************************************************/
 /**********************************Modal*******************************/
 /**********************************************************************/
-#contact_modal {
+#contactModal {
   display: none;
   align-items: center;
   position: fixed;

@@ -38,6 +38,7 @@ class PortfolioPictureCards {
     informationwrapper.setAttribute("class", "information_wrapper");
     const titles = document.createElement("h3");
     titles.setAttribute("class", "img_title");
+    titles.setAttribute("tabindex", "0");
     titles.textContent = this.portfolio.title;
     /****like_wrapper****/
     const likewrapper = document.createElement("button");

@@ -1,4 +1,4 @@
-class Api {
+class photographersApi {
   constructor(url) {
     this._url = url;
   }
@@ -13,11 +13,12 @@ class Api {
     }
   }
 }
+export default photographersApi;
 
+/*
 class photographersApi extends Api {
   constructor(url) {
     super(url);
   }
 }
-
-export default photographersApi;
+*/

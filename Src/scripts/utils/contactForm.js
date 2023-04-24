@@ -9,10 +9,10 @@ class PhotographerName {
 }
 class ContactForm {
   constructor() {
+    this.contactModal = document.getElementById("contactModal");
     this.photographerName = document.querySelector(".photographer_name");
     this.openmodal = document.getElementById("openModal");
     this.closemodal = document.getElementById("closeModal");
-    this.modal = document.getElementById("contact_modal");
     this.inputs = document.querySelectorAll(".input");
     this.form = document.querySelector("form");
     this.error = {
@@ -32,12 +32,15 @@ class ContactForm {
   }
 
   displayModal() {
-    this.modal.style.display = "block";
+    this.contactModal.style.display = "block";
+    this.contactModal.setAttribute("tabindex", "0");
+    this.contactModal.focus();
     this.getInputData();
     this.submit();
   }
   closeModal() {
-    this.modal.style.display = "none";
+    this.contactModal.style.display = "none";
+    this.contactModal.setAttribute("tabindex", "-1");
   }
 
   //function for display error message and border or delete it
@@ -129,10 +132,19 @@ class ContactForm {
       }
     });
   }
+  //keyboard event Delete and escape
+  closingKeyboard(event) {
+    const keyboardNumber = event.key;
+    if (keyboardNumber == "Escape" || keyboardNumber == "Delete") {
+      this.closeModal();
+    }
+  }
+
   //launching function for open and close modal on click, launch the photographername class
   launchForm(photographeProfilFilter) {
     this.openmodal.addEventListener("click", () => this.displayModal());
     this.closemodal.addEventListener("click", () => this.closeModal());
+    window.addEventListener("keydown", (event) => this.closingKeyboard(event));
     const photographername = new PhotographerName();
     photographername.displayPhotographerName(photographeProfilFilter);
   }
