@@ -1,7 +1,5 @@
 //api
 import photographersApi from "../api/api.js";
-//model
-import PhotographersModel from "../models/photographersModel.js";
 //template
 import photographersCard from "../template/photographersCards.js";
 
@@ -17,19 +15,13 @@ class App {
     //get data from Api
     const { photographers } = await this.dataApi.get();
 
-    /*console.log(await this.dataApi.get());
-    console.log(photographers);*/
-
     //send photophraphers datas to class photographers
-    photographers
-      .map((photographer) => new PhotographersModel(photographer))
-      .forEach((photographer) => {
-        console.log(photographer);
-        const photographerTemplate = new photographersCard(photographer);
-        this.photographersSection.appendChild(
-          photographerTemplate.getUserCardDOM()
-        );
-      });
+    photographers.forEach((photographer) => {
+      const photographerTemplate = new photographersCard(photographer);
+      this.photographersSection.appendChild(
+        photographerTemplate.getUserCardDOM()
+      );
+    });
     getPhotographerId();
   }
 }

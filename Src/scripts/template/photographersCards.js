@@ -1,6 +1,7 @@
 class photographersCard {
   constructor(data) {
     this.profils = data;
+    this.image = `./Src/assets/photographers/${this.profils.portrait}`;
   }
   //create 1 article for each photographers, && add data in html
   getUserCardDOM() {
@@ -11,7 +12,7 @@ class photographersCard {
     a.setAttribute("aria-label", ` ${this.profils.name} profil page`);
     article.setAttribute("id", this.profils.id);
     const img = document.createElement("img");
-    img.setAttribute("src", this.profils.portrait);
+    img.setAttribute("src", this.image);
     img.setAttribute("alt", this.profils.name);
     const h2 = document.createElement("h2");
     h2.textContent = this.profils.name;

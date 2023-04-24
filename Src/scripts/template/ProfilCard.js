@@ -34,7 +34,10 @@ class ProfilCard {
     const profilImg = document.createElement("img");
     profilImg.setAttribute("class", "profil_image");
     profilImg.setAttribute("alt", this.profil.name);
-    profilImg.setAttribute("src", this.profil.portrait);
+    profilImg.setAttribute(
+      "src",
+      `./Src/assets/photographers/${this.profil.portrait}`
+    );
     profilImg.setAttribute("tabindex", "0");
     //appendchild
     profilcontainer.appendChild(profilWrapper);

@@ -4,10 +4,12 @@ import photographersApi from "../api/api.js";
 //factory
 import MediasFactory from "../factories/mediaFactory.js";
 //model
-import ProfilModel from "../models/profilModel.js";
+import MediasImage from "../models/mediaImageModel.js";
+import MediasVideo from "../models/mediaVideoModel.js";
 //template
 import LightBoxImageCard from "../template/lightboxImageCard.js";
 import PortfolioPictureCards from "../template/portfolioPictureCards.js";
+import PortfolioVideoCards from "../template/portfolioVideoCards.js";
 import ProfilCard from "../template/ProfilCard.js";
 //template
 import ContactForm from "../utils/contactForm.js";
@@ -42,9 +44,6 @@ class App {
       (getId) => getId.photographerId == recupId
     );
 
-    /* console.log(photographeProfilFilter);
-    console.log(mediasDataFilter);*/
-
     //filter by popularity, date and title
     switch (userFilterChoice) {
       case "title":
@@ -52,7 +51,6 @@ class App {
         break;
       case "date":
         mediasDataFilter.sort((a, b) => (a.date < b.date ? 1 : -1));
-
         break;
       default:
         mediasDataFilter.sort((a, b) => b.likes - a.likes);
@@ -63,31 +61,33 @@ class App {
       (media) => new MediasFactory(media)
     );
 
-    console.log(sendMediaDatas);
-
-    // Display the media objects
-    sendMediaDatas.forEach((image) => {
-      const imageTemplate = new PortfolioPictureCards(image);
-      this.mediaSection.appendChild(imageTemplate.getPortfolioImageCardDOM());
+    //send video object & image object to dom
+    sendMediaDatas.forEach((media) => {
+      if (media instanceof MediasImage) {
+        const imageTemplate = new PortfolioPictureCards(media);
+        this.mediaSection.appendChild(imageTemplate.getPortfolioImageCardDOM());
+      } else if (media instanceof MediasVideo) {
+        const videoTemplate = new PortfolioVideoCards(media);
+        this.mediaSection.appendChild(videoTemplate.getPortfolioVideoCardDOM());
+      }
     });
 
-    // Display the photographer profile
-    photographeProfilFilter
-      .map((data) => new ProfilModel(data))
-      .forEach((data) => {
-        const mediaProfileTemplate = new ProfilCard(data);
-        this.photographHeader.appendChild(
-          mediaProfileTemplate.getProfilCardDOM()
-        );
-        this.photographFooter.appendChild(
-          mediaProfileTemplate.getFooterCardDOM()
-        );
-      });
+    //display the photographer profile
+    photographeProfilFilter.forEach((data) => {
+      const mediaProfileTemplate = new ProfilCard(data);
+      this.photographHeader.appendChild(
+        mediaProfileTemplate.getProfilCardDOM()
+      );
+      this.photographFooter.appendChild(
+        mediaProfileTemplate.getFooterCardDOM()
+      );
+    });
 
     this.launchingClass(mediasDataFilter, photographeProfilFilter);
   }
+
+  //launch lightbox, contactForm, likeimage methodes
   launchingClass(mediasDataFilter, photographeProfilFilter) {
-    //launch lightbox, contactForm, likeimage
     const lightBox = new LightBox(mediasDataFilter);
     const contactform = new ContactForm();
     const likeimplementing = new LikeImplementing();
@@ -203,28 +203,21 @@ class LightBox {
     this.getIndexNumber = 0;
     this.pictureSrc = "";
     //filter data for get all url
-    console.log(data);
     this.getAllUrl = data.map((data) => {
       return data.image || data.video;
     });
   }
 
   lightbox() {
-    console.log(this.getAllUrl);
     //When we click on 1 picture of portfolio
     this.imageContainer.forEach((article) => {
       article.addEventListener("click", () => {
         //get the url of clicked picture
-        console.log(article.children[0]);
         this.pictureSrc = article.children[0].getAttribute("src").split("/")[4];
-
-        console.log(this.pictureSrc);
         //get Array number will implement a number for each picture, here we find the array index of the picture who is clicked
         this.getIndexNumber = this.getAllUrl.findIndex(
           (e) => e === this.pictureSrc
         );
-        console.log(this.getIndexNumber);
-
         this.openLightbox();
         this.displayLightbox();
         this.slideLightbox();
@@ -294,7 +287,6 @@ class LightBox {
     //get data of picture who is selected in lightbox with the getArrayNumber
     const getDataCard = [this.data[this.getIndexNumber]];
 
-    console.log(getDataCard);
     //create lightBoxCard methode and launch the dom, only if imageWrapper doesn't exist (if not all the time a user press Entrer we will get a new imageWrapper)
     if (!imageWrapper) {
       getDataCard.forEach((data) => {

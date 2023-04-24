@@ -1,8 +1,8 @@
-class PortfolioPictureCards {
+class PortfolioVideoCards {
   constructor(data) {
     this.portfolio = data;
   }
-  getPortfolioImageCardDOM() {
+  getPortfolioVideoCardDOM() {
     const article = document.createElement("article");
     article.setAttribute("class", "picture_card");
     const container = document.createElement("button");
@@ -11,15 +11,16 @@ class PortfolioPictureCards {
       "aria-label",
       `${this.portfolio.title}, closeup view`
     );
-    const img = document.createElement("img");
-    img.setAttribute("src", this.portfolio.image);
-    img.setAttribute("class", "pictures");
-    img.setAttribute(
-      "alt",
+
+    const video = document.createElement("video");
+    video.setAttribute("src", this.portfolio.video);
+    video.setAttribute("class", "videos");
+    video.setAttribute(
+      "title",
       `${this.portfolio.title} from ${this.portfolio.name}`
     );
     article.appendChild(container);
-    container.appendChild(img);
+    container.appendChild(video);
 
     /*information_wrapper*/
     const informationwrapper = document.createElement("div");
@@ -48,4 +49,4 @@ class PortfolioPictureCards {
   }
 }
 
-export default PortfolioPictureCards;
+export default PortfolioVideoCards;

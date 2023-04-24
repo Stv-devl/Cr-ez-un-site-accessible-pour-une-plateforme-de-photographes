@@ -14,11 +14,3 @@ class photographersApi {
   }
 }
 export default photographersApi;
-
-/*
-class photographersApi extends Api {
-  constructor(url) {
-    super(url);
-  }
-}
-*/
