@@ -63,7 +63,6 @@ class App {
     const sendMediaDatas = mediasDataFilter.map(
       (media) => new MediasFactory(media)
     );
-
     /*console.log(sendMediaDatas);*/
 
     //send video object & image object to dom
@@ -211,8 +210,8 @@ class LightBox {
     this.getAllUrl = data.map((data) => {
       return data.image || data.video;
     });
-    console.log(data);
-    console.log(this.getAllUrl);
+    /*console.log(data);
+    console.log(this.getAllUrl);*/
   }
 
   lightbox() {
@@ -228,9 +227,7 @@ class LightBox {
         this.getIndexNumber = this.getAllUrl.findIndex(
           (e) => e === this.pictureSrc
         );
-
         /*console.log(this.getIndexNumber);*/
-
         this.openLightbox();
         this.displayLightbox();
         this.slideLightbox();
@@ -270,9 +267,18 @@ class LightBox {
         this.slideRight();
       }
     });
+
+    window.addEventListener("keydown", (event) => {
+      const keyboardNumber = event.key;
+      if (keyboardNumber == "Escape" || keyboardNumber == "Delete") {
+        this.deleteImageWrapper();
+        this.closeLightbox();
+      }
+    });
   }
   //when we move on left or right or close we will delete the image wrapper
   deleteImageWrapper() {
+    console.log("ça marche");
     const imageWrapper = document.getElementById("imageWrapper");
     imageWrapper ? imageWrapper.remove() : null;
   }
