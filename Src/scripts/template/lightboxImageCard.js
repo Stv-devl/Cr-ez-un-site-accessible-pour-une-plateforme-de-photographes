@@ -1,20 +1,21 @@
 class LightBoxImageCard {
   constructor(data) {
     this.lightboxImage = data;
+    console.log(`${this.lightboxImage.video}`);
   }
   lightBoxImageCardDom() {
     const imageWrapper = document.createElement("div");
     imageWrapper.setAttribute("class", "image_wrapper");
     imageWrapper.setAttribute("id", "imageWrapper");
     if (!this.lightboxImage.video) {
-      const picture = `./Src/assets/images/${this.lightboxImage.image}`;
+      const picture = `${this.lightboxImage.image}`;
       const img = document.createElement("img");
       img.setAttribute("src", picture);
       img.setAttribute("class", "lightbox_pictures");
       img.setAttribute("alt", this.lightboxImage.title);
       imageWrapper.appendChild(img);
     } else {
-      const videosource = `./Src/assets/images/${this.lightboxImage.video}`;
+      const videosource = `${this.lightboxImage.video}`;
       const video = document.createElement("video");
       video.setAttribute("controls", "");
       video.setAttribute("preload", "metadata");

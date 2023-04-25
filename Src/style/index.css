@@ -234,6 +234,9 @@ $breakup-desktop: 1060px;*/
   margin-top: 15px;
   color: #525252;
 }
+.photographer_main .photograph-header .profil_container .contact_button {
+  margin-right: 20px;
+}
 .photographer_main .photograph-header .profil_container .contact_button:hover {
   background-color: #db8876;
   color: #000000;
@@ -401,35 +404,54 @@ $breakup-desktop: 1060px;*/
   height: 900px;
   margin: 0 auto;
 }
-.lightbox_container .closing_cross {
+@media screen and (max-width: 1250px) {
+  .lightbox_container .lightbox_wrapper {
+    width: 800px;
+    height: 650px;
+  }
+}
+.lightbox_container .lightbox_wrapper .closing_cross {
   position: absolute;
   zoom: 200%;
   right: -40px;
   top: 10px;
   cursor: pointer;
 }
-.lightbox_container .previous,
-.lightbox_container .next {
+.lightbox_container .lightbox_wrapper .previous,
+.lightbox_container .lightbox_wrapper .next {
   zoom: 200%;
   cursor: pointer;
 }
-.lightbox_container .image_switch {
+.lightbox_container .lightbox_wrapper .image_switch {
   position: absolute;
   display: flex;
   justify-content: space-between;
-  top: 50%;
-  left: -75px;
-  width: 1200px;
+  top: 45%;
+  left: -7%;
+  right: -7%;
+  width: 115%;
 }
-.lightbox_container .lightbox_videos {
-  width: 1050px;
-  height: 100%;
-}
-.lightbox_container .lightbox_pictures {
+.lightbox_container .lightbox_wrapper .lightbox_videos {
   width: 1050px;
   height: 900px;
 }
-.lightbox_container .lightbox_title {
+@media screen and (max-width: 1250px) {
+  .lightbox_container .lightbox_wrapper .lightbox_videos {
+    width: 800px;
+    height: 650px;
+  }
+}
+.lightbox_container .lightbox_wrapper .lightbox_pictures {
+  width: 1050px;
+  height: 900px;
+}
+@media screen and (max-width: 1250px) {
+  .lightbox_container .lightbox_wrapper .lightbox_pictures {
+    width: 800px;
+    height: 650px;
+  }
+}
+.lightbox_container .lightbox_wrapper .lightbox_title {
   text-align: left;
   color: #901c1c;
 }
