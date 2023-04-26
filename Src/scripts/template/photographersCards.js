@@ -2,7 +2,6 @@ class photographersCard {
   constructor(data) {
     this.profils = data;
     this.image = `./Src/assets/photographers/${this.profils.portrait}`;
-    /* console.log(data);*/
   }
   //create 1 article for each photographers, && add data in html
   getUserCardDOM() {

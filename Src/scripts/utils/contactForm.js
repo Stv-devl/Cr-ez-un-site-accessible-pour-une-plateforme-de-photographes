@@ -56,13 +56,13 @@ class ContactForm {
       this.errorDisplay();
     } else {
       this.errorMessage = "";
-      this.validateForm[this.inputId] = true;
+      this.validateForm[this.inputId] = this.inputValue;
       this.errorDisplay();
     }
   }
   //set error message and send regex to verification function
   namesChecker() {
-    const inputRegex = /^[a-zA-Z0-9_.-]{3,20}$/;
+    const inputRegex = /^[a-zA-Z0-9\s_.-]{3,20}$/;
     this.errorMessage = this.error.name;
     this.inputChecker(inputRegex);
   }
@@ -114,11 +114,12 @@ class ContactForm {
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (
-        this.validateForm.firstname === true &&
-        this.validateForm.lastname === true &&
-        this.validateForm.email === true &&
-        this.validateForm.textArea === true
+        this.validateForm.firstname &&
+        this.validateForm.lastname &&
+        this.validateForm.email &&
+        this.validateForm.textArea
       ) {
+        console.log(this.validateForm);
         this.inputs.forEach((input) => (input.value = ""));
         this.validateForm = {
           firstname: false,
@@ -126,6 +127,7 @@ class ContactForm {
           email: false,
           textArea: false,
         };
+
         alert("Merci, message envoyé");
       } else {
         alert("Veuillez remplir le formulaire correctement");

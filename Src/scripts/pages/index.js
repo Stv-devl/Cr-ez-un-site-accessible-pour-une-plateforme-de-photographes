@@ -15,9 +15,6 @@ class App {
     //get data from Api
     const { photographers } = await this.dataApi.get();
 
-    /* console.log(await this.dataApi.get());
-    console.log(photographers);*/
-
     //send photophraphers datas to class photographers
     photographers.forEach((photographer) => {
       const photographerTemplate = new photographersCard(photographer);

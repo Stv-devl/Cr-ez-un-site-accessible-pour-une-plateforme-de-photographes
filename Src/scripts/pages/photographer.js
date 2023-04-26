@@ -24,8 +24,7 @@ class App {
 
   async displayData(userFilterChoice) {
     //get data media and photographers
-    const { media } = await this.dataApi.get();
-    const { photographers } = await this.dataApi.get();
+    const { media, photographers } = await this.dataApi.get();
 
     //delete all display from page when change the filter (popular, date, title)
     this.mediaSection.innerHTML = "";
@@ -44,8 +43,6 @@ class App {
     const mediasDataFilter = media.filter(
       (getId) => getId.photographerId == recupId
     );
-    /*console.log(photographeProfilFilter);
-    console.log(mediasDataFilter);*/
 
     //filter by popularity, date and title
     switch (userFilterChoice) {
@@ -63,7 +60,6 @@ class App {
     const sendMediaDatas = mediasDataFilter.map(
       (media) => new MediasFactory(media)
     );
-    /*console.log(sendMediaDatas);*/
 
     //send video object & image object to dom
     sendMediaDatas.forEach((media) => {
@@ -210,24 +206,20 @@ class LightBox {
     this.getAllUrl = data.map((data) => {
       return data.image || data.video;
     });
-    /*console.log(data);
-    console.log(this.getAllUrl);*/
   }
 
   lightbox() {
     //When we click on 1 picture of portfolio
     this.imageContainer.forEach((article) => {
       article.addEventListener("click", () => {
-        console.log(article);
         //get the url of clicked picture
         this.pictureSrc = article.children[0].getAttribute("src");
-        /*console.log( this.pictureSrc );*/
-        console.log(article.children[0].getAttribute("src"));
+
         //get Array number will implement a number for each picture, here we find the array index of the picture who is clicked
         this.getIndexNumber = this.getAllUrl.findIndex(
           (e) => e === this.pictureSrc
         );
-        /*console.log(this.getIndexNumber);*/
+
         this.openLightbox();
         this.displayLightbox();
         this.slideLightbox();
@@ -278,7 +270,6 @@ class LightBox {
   }
   //when we move on left or right or close we will delete the image wrapper
   deleteImageWrapper() {
-    console.log("ça marche");
     const imageWrapper = document.getElementById("imageWrapper");
     imageWrapper ? imageWrapper.remove() : null;
   }
@@ -302,16 +293,13 @@ class LightBox {
   }
   //display the light box in the dom
   displayLightbox() {
-    console.log(this.getIndexNumber);
+    /*console.log(this.getIndexNumber);*/
     const imageWrapper = document.getElementById("imageWrapper");
     //get data of picture who is selected in lightbox with the getArrayNumber
     const getDataCard = [this.data[this.getIndexNumber]];
-
-    console.log([this.data[this.getIndexNumber]]);
     //create lightBoxCard methode and launch the dom, only if imageWrapper doesn't exist (if not all the time a user press Entrer we will get a new imageWrapper)
     if (!imageWrapper) {
       getDataCard.forEach((data) => {
-        console.log(data);
         const lightBoxCard = new LightBoxImageCard(data);
         this.lightBoxWrapper.appendChild(lightBoxCard.lightBoxImageCardDom());
       });

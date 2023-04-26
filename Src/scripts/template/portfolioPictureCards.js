@@ -14,10 +14,7 @@ class PortfolioPictureCards {
     const img = document.createElement("img");
     img.setAttribute("src", this.portfolio.image);
     img.setAttribute("class", "pictures");
-    img.setAttribute(
-      "alt",
-      `${this.portfolio.title} from ${this.portfolio.name}`
-    );
+    img.setAttribute("alt", `${this.portfolio.title}`);
     article.appendChild(container);
     container.appendChild(img);
 

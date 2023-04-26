@@ -1,7 +1,6 @@
 class LightBoxImageCard {
   constructor(data) {
     this.lightboxImage = data;
-    console.log(`${this.lightboxImage.video}`);
   }
   lightBoxImageCardDom() {
     const imageWrapper = document.createElement("div");
